@@ -29,7 +29,14 @@ export default function Page() {
       titulo: "Acabamento e Detalhamento",
       desc: "Detalhamento completo para elevar o padrão do seu carro.",
       img: "/acabamento-detalhamento.jpg",
-    },
+    },const galeria = [
+  { titulo: "Nossa unidade", img: "/galeria-01.jpg" },
+  { titulo: "Entrega premium", img: "/galeria-02.jpg" },
+  { titulo: "Polimento técnico", img: "/galeria-03.jpg" },
+  { titulo: "Preparação", img: "/galeria-04.jpg" },
+  { titulo: "Pintura / reparo", img: "/galeria-05.jpg" },
+];
+
   ];
 
   return (
@@ -219,40 +226,69 @@ export default function Page() {
                 background: "rgba(0,0,0,0.2)",
               }}
             >
-              Ver galeria
-            </a>
+            <section id="galeria" style={{ padding: "64px 18px", background: "#050505" }}>
+  <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+    <h2 style={{ margin: 0, fontSize: 34, fontWeight: 900 }}>Nossa Galeria</h2>
+    <p style={{ marginTop: 10, color: "rgba(255,255,255,0.75)", maxWidth: 820 }}>
+      Alguns trabalhos realizados pela nossa equipe técnica especializada.
+    </p>
+
+    <div
+      style={{
+        marginTop: 22,
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+        gap: 16,
+      }}
+    >
+      {galeria.map((g) => (
+        <div
+          key={g.titulo}
+          style={{
+            borderRadius: 18,
+            overflow: "hidden",
+            border: "1px solid rgba(34,211,238,0.12)",
+            background: "rgba(255,255,255,0.03)",
+          }}
+        >
+          <div style={{ aspectRatio: "4/3" }}>
+            <img
+              src={g.img}
+              alt={g.titulo}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
           </div>
 
-          <div
-            style={{
-              marginTop: 26,
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: 10,
-              maxWidth: 900,
-            }}
-          >
-            {[
-              ["Atendimento", "Seg–Sex • 08:00–18:00"],
-              ["Local", "Barra da Tijuca • RJ"],
-              ["WhatsApp", "(21) 96918-7827"],
-            ].map(([t, d]) => (
-              <div
-                key={t}
-                style={{
-                  padding: 14,
-                  borderRadius: 14,
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(34,211,238,0.15)",
-                }}
-              >
-                <div style={{ fontWeight: 900, color: "#22d3ee" }}>{t}</div>
-                <div style={{ opacity: 0.85 }}>{d}</div>
-              </div>
-            ))}
+          <div style={{ padding: 12 }}>
+            <div style={{ fontWeight: 900 }}>{g.titulo}</div>
+            <div style={{ fontSize: 13, color: "#22d3ee", marginTop: 4 }}>
+              Trabalho profissional BLINK
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div style={{ marginTop: 22 }}>
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          display: "inline-block",
+          textDecoration: "none",
+          padding: "12px 18px",
+          borderRadius: 14,
+          fontWeight: 900,
+          color: "#000",
+          background: "linear-gradient(90deg, #22d3ee, #38bdf8)",
+        }}
+      >
+        Pedir orçamento agora
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* SERVIÇOS */}
       <section id="servicos" style={{ padding: "64px 18px" }}>
