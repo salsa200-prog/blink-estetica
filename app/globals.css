@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
+/* RESET BÁSICO */
+* {
   margin: 0;
   padding: 0;
-  background: #000;
-  color: #fff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Corrige textos colados */
+p, h1, h2, h3, h4, span {
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: 1.4;
 }
