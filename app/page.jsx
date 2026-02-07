@@ -6,181 +6,207 @@ const services = [
   {
     title: "Pintura Automotiva",
     desc: "Acabamento de alto padrão, correção e pintura completa.",
-    img: "/pintura-automotiva.jpg",
   },
   {
     title: "Polimento Técnico",
     desc: "Remoção de riscos e brilho profundo com técnica profissional.",
-    img: "/polimento-tecnico.png",
   },
   {
     title: "Cristalização Automotiva",
     desc: "Proteção, hidrorrepelência e visual renovado para a pintura.",
-    img: "/cristalizacao-automotiva.jpg",
   },
   {
     title: "Lanternagem Estrutural",
     desc: "Recuperação e alinhamento com precisão e segurança.",
-    img: "/lanternagem-estrutural.jpg",
   },
   {
     title: "Acabamento e Detalhamento",
     desc: "Detalhamento completo para elevar o padrão do seu carro.",
-    img: "/acabamento-detalhamento.jpg",
   },
 ];
 
-export default function Home() {
+export default function Page() {
+  const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+    "Olá! Quero um orçamento na BLINK Estética Automotiva."
+  )}`;
+
   return (
     <main className="min-h-screen bg-black text-white">
-      {/* HERO COM FUNDO FIXO */}
-      <section
-        className="hero">
-        }}
-      >
-        {/* overlay escuro */}
-        <div className="absolute inset-0 bg-black/70" />
-
-        {/* HEADER */}
-        <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md">
-  <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
-
-    {/* LOGO + TEXTO */}
-    <div className="flex items-center gap-3">
-      <Image
-        src="/logo.png"
-        alt="Blink Estética"
-        width={40}
-        height={40}
-        className="rounded-full bg-white"
-        priority
-      />
-      <div className="flex flex-col leading-tight">
-        <span className="text-sm font-semibold text-white">
-          BLINK ESTÉTICA
-        </span>
-        <span className="text-xs text-white/70">
-          Barra da Tijuca - RJ
-        </span>
-      </div>
-    </div>
-
-    {/* MENU */}
-    <nav className="hidden md:flex gap-6 text-sm text-white/80">
-      <a href="#servicos" className="hover:text-white">Serviços</a>
-      <a href="#galeria" className="hover:text-white">Galeria</a>
-      <a href="#contato" className="hover:text-white">Contato</a>
-    </nav>
-
-    {/* BOTÃO */}
-    <a
-      href="https://wa.me/5521969187827"
-      className="bg-cyan-400 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-cyan-300 transition"
-    >
-      Falar no WhatsApp
-    </a>
-
-  </div>
-</header>
-
-        {/* CONTEÚDO HERO */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-10 pb-16">
-          <span className="inline-block mb-5 px-4 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-sm border border-cyan-400/20">
-            Onde estética vira padrão • Atendimento rápido
-          </span>
-
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            BLINK Estética Automotiva
-          </h1>
-
-          <p className="text-white/80 mt-4 max-w-2xl">
-            Especialistas em <b>Pintura</b>, <b>Polimento</b>, <b>Cristalização</b> e{" "}
-            <b>Lanternagem</b> na Barra da Tijuca. Seu carro com acabamento de alto padrão.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mt-8">
-            <a
-              href={`https://wa.me/${WHATSAPP}`}
-              className="bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-cyan-300 transition"
-            >
-              Solicitar orçamento no WhatsApp
-            </a>
-            <a
-              href="#galeria"
-              className="border border-white/20 px-6 py-3 rounded-xl hover:border-cyan-400/60 transition"
-            >
-              Ver galeria
-            </a>
+      {/* HEADER */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="Blink Estética"
+              width={40}
+              height={40}
+              className="rounded-full bg-white"
+              priority
+            />
+            <div className="leading-tight">
+              <div className="font-semibold text-sm">BLINK ESTÉTICA</div>
+              <div className="text-xs text-white/70">Barra da Tijuca - RJ</div>
+            </div>
           </div>
 
-          {/* mini cards */}
-          <div className="grid md:grid-cols-3 gap-4 mt-10 max-w-4xl">
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-4 backdrop-blur">
-              <div className="text-cyan-300 font-semibold text-sm">Atendimento</div>
-              <div className="text-white/80 text-sm">Seg - Sex • 08:00 - 18:00</div>
-            </div>
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-4 backdrop-blur">
-              <div className="text-cyan-300 font-semibold text-sm">Local</div>
-              <div className="text-white/80 text-sm">Barra da Tijuca - RJ</div>
-            </div>
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-4 backdrop-blur">
-              <div className="text-cyan-300 font-semibold text-sm">WhatsApp</div>
-              <div className="text-white/80 text-sm">(21) 96918-7827</div>
+          <nav className="hidden md:flex gap-6 text-sm text-white/80">
+            <a href="#servicos" className="hover:text-white">
+              Serviços
+            </a>
+            <a href="#galeria" className="hover:text-white">
+              Galeria
+            </a>
+            <a href="#contato" className="hover:text-white">
+              Contato
+            </a>
+          </nav>
+
+          <a
+            href={waLink}
+            className="bg-cyan-400 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-cyan-300 transition"
+          >
+            Falar no WhatsApp
+          </a>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="relative pt-20">
+        <div className="relative h-[78vh] w-full overflow-hidden">
+          <Image
+            src="/hero.jpg"
+            alt="BLINK Estética Automotiva"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* overlay escuro */}
+          <div className="absolute inset-0 bg-black/55" />
+
+          <div className="absolute inset-0">
+            <div className="max-w-7xl mx-auto h-full px-5 flex items-center">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 text-xs md:text-sm px-4 py-2 rounded-full bg-white/10 border border-white/15">
+                  <span className="text-cyan-300">Onde estética vira padrão</span>
+                  <span className="text-white/60">• Atendimento rápido</span>
+                </div>
+
+                <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
+                  BLINK <span className="text-white">Estética Automotiva</span>
+                </h1>
+
+                <p className="mt-4 text-white/80 md:text-lg">
+                  Especialistas em <b>Pintura</b>, <b>Polimento</b>,{" "}
+                  <b>Cristalização</b> e <b>Lanternagem</b> na Barra da Tijuca.
+                  Seu carro com acabamento de alto padrão.
+                </p>
+
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a
+                    href={waLink}
+                    className="bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-cyan-300 transition"
+                  >
+                    Solicitar orçamento no WhatsApp
+                  </a>
+                  <a
+                    href="#galeria"
+                    className="px-6 py-3 rounded-xl border border-white/20 hover:bg-white/10 transition"
+                  >
+                    Ver galeria
+                  </a>
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4">
+                    <div className="text-xs text-cyan-300 font-semibold">
+                      Atendimento
+                    </div>
+                    <div className="text-sm text-white/80">
+                      Seg - Sex • 08:00 - 18:00
+                    </div>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4">
+                    <div className="text-xs text-cyan-300 font-semibold">
+                      Local
+                    </div>
+                    <div className="text-sm text-white/80">
+                      Barra da Tijuca - RJ
+                    </div>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4">
+                    <div className="text-xs text-cyan-300 font-semibold">
+                      WhatsApp
+                    </div>
+                    <div className="text-sm text-white/80">(21) 96918-7827</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* SERVIÇOS */}
-      <section id="servicos" className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-extrabold">Serviços</h2>
-        <p className="text-white/70 mt-2">
-          Confira alguns dos nossos principais serviços — acabamento profissional e padrão BLINK.
-        </p>
+      <section id="servicos" className="py-16">
+        <div className="max-w-7xl mx-auto px-5">
+          <h2 className="text-2xl md:text-3xl font-bold">Serviços</h2>
+          <p className="text-white/60 mt-2">
+            Confira alguns dos nossos principais serviços — acabamento
+            profissional e padrão BLINK.
+          </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-          {services.map((s) => (
-            <article
-              key={s.title}
-              className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden hover:border-cyan-400/40 transition"
-            >
-              <div className="relative h-40">
-                <Image src={s.img} alt={s.title} fill className="object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold">{s.title}</h3>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {services.map((s) => (
+              <div
+                key={s.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition"
+              >
+                <h3 className="font-semibold">{s.title}</h3>
                 <p className="text-white/70 text-sm mt-2">{s.desc}</p>
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* GALERIA (depois a gente coloca as fotos novas) */}
-      <section id="galeria" className="max-w-6xl mx-auto px-6 pb-16">
-        <h2 className="text-3xl font-extrabold">Nossa Galeria</h2>
-        <p className="text-white/70 mt-2">
-          Me mande as fotos novas que você quer usar e eu monto o grid certinho aqui.
-        </p>
+      {/* GALERIA */}
+      <section id="galeria" className="py-16 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-5">
+          <h2 className="text-2xl md:text-3xl font-bold">Nossa Galeria</h2>
+          <p className="text-white/60 mt-2">
+            Me mande suas fotos e eu coloco aqui no grid certinho.
+          </p>
+
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-8 text-white/60">
+            Galeria ainda vazia. Suba suas imagens em <b>/public</b> e eu te
+            passo a lista pronta pra colar aqui.
+          </div>
+        </div>
       </section>
 
       {/* CONTATO */}
-      <section id="contato" className="max-w-6xl mx-auto px-6 pb-16">
-        <h2 className="text-3xl font-extrabold">Contato</h2>
-        <p className="text-white/70 mt-2">Atendimento rápido no WhatsApp. Fale com a gente!</p>
+      <section id="contato" className="py-16 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-5">
+          <h2 className="text-2xl md:text-3xl font-bold">Contato</h2>
+          <p className="text-white/60 mt-2">
+            Atendimento rápido no WhatsApp. Fale com a gente!
+          </p>
 
-        <div className="mt-8">
-          <a
-            href={`https://wa.me/${WHATSAPP}`}
-            className="inline-flex bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-cyan-300 transition"
-          >
-            Enviar mensagem no WhatsApp
-          </a>
+          <div className="mt-8">
+            <a
+              href={waLink}
+              className="inline-flex bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-cyan-300 transition"
+            >
+              Enviar mensagem no WhatsApp
+            </a>
+          </div>
+
+          <footer className="mt-10 text-xs text-white/40">
+            © {new Date().getFullYear()} BLINK Estética Automotiva LTDA. Todos os
+            direitos reservados.
+          </footer>
         </div>
-
-        <footer className="mt-12 text-white/50 text-sm">
-          © {new Date().getFullYear()} BLINK Estética Automotiva LTDA. Todos os direitos reservados.
-        </footer>
       </section>
     </main>
   );
