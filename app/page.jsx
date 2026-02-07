@@ -43,20 +43,24 @@ export default function Home() {
 
         {/* HEADER */}
         <header className="relative z-10 max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/logo.jpg"
-              alt="Blink Estética Automotiva"
-              width={44}
-              height={44}
-              className="rounded-full"
-            />
-            <div className="leading-tight">
-              <div className="font-extrabold">BLINK ESTÉTICA</div>
-              <div className="text-xs text-white/70">Barra da Tijuca - RJ</div>
-            </div>
-          </div>
-
+         <div className="flex items-center gap-3">
+  <Image
+    src="/logo.png"
+    alt="Blink Estética"
+    width={40}
+    height={40}
+    className="h-10 w-10 rounded-full bg-white"
+    priority
+  />
+  <div className="flex flex-col leading-tight">
+    <span className="text-sm font-semibold text-white">
+      BLINK Estética
+    </span>
+    <span className="text-xs text-white/70">
+      Barra da Tijuca - RJ
+    </span>
+  </div>
+</div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
             <a href="#servicos" className="hover:text-white">Serviços</a>
             <a href="#galeria" className="hover:text-white">Galeria</a>
