@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start"
   },
-  "dependencies": {
     "devDependencies": {
   "autoprefixer": "^10.4.0",
   "postcss": "^8.4.0",
