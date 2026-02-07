@@ -42,38 +42,46 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/70" />
 
         {/* HEADER */}
-        <header className="relative z-10 max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-         <div className="flex items-center gap-3">
-  <Image
-    src="/logo.png"
-    alt="Blink Estética"
-    width={40}
-    height={40}
-    className="h-10 w-10 rounded-full bg-white"
-    priority
-  />
-  <div className="flex flex-col leading-tight">
-    <span className="text-sm font-semibold text-white">
-      BLINK Estética
-    </span>
-    <span className="text-xs text-white/70">
-      Barra da Tijuca - RJ
-    </span>
-  </div>
-</div>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
-            <a href="#servicos" className="hover:text-white">Serviços</a>
-            <a href="#galeria" className="hover:text-white">Galeria</a>
-            <a href="#contato" className="hover:text-white">Contato</a>
-          </nav>
+        <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md">
+  <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
 
-          <a
-            href={`https://wa.me/${WHATSAPP}`}
-            className="bg-cyan-400 text-black px-5 py-2.5 rounded-xl font-semibold hover:bg-cyan-300 transition"
-          >
-            Falar no WhatsApp
-          </a>
-        </header>
+    {/* LOGO + TEXTO */}
+    <div className="flex items-center gap-3">
+      <Image
+        src="/logo.png"
+        alt="Blink Estética"
+        width={40}
+        height={40}
+        className="rounded-full bg-white"
+        priority
+      />
+      <div className="flex flex-col leading-tight">
+        <span className="text-sm font-semibold text-white">
+          BLINK ESTÉTICA
+        </span>
+        <span className="text-xs text-white/70">
+          Barra da Tijuca - RJ
+        </span>
+      </div>
+    </div>
+
+    {/* MENU */}
+    <nav className="hidden md:flex gap-6 text-sm text-white/80">
+      <a href="#servicos" className="hover:text-white">Serviços</a>
+      <a href="#galeria" className="hover:text-white">Galeria</a>
+      <a href="#contato" className="hover:text-white">Contato</a>
+    </nav>
+
+    {/* BOTÃO */}
+    <a
+      href="https://wa.me/5521969187827"
+      className="bg-cyan-400 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-cyan-300 transition"
+    >
+      Falar no WhatsApp
+    </a>
+
+  </div>
+</header>
 
         {/* CONTEÚDO HERO */}
         <div className="relative z-10 max-w-6xl mx-auto px-6 pt-10 pb-16">
