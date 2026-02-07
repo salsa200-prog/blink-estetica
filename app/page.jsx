@@ -35,12 +35,7 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white">
       {/* HERO COM FUNDO FIXO */}
       <section
-        className="relative min-h-screen"
-        style={{
-          backgroundImage: "url('/fachada.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+        className="hero">
         }}
       >
         {/* overlay escuro */}
