@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black text-white">
 
       {/* HERO */}
       <section
@@ -22,12 +22,14 @@ export default function Home() {
           </h1>
 
           <p className="text-gray-300 mb-8">
-            Especialistas em pintura, polimento técnico, lanternagem estrutural.
+            Especialistas em pintura automotiva, polimento técnico e lanternagem
+            estrutural com acabamento de alto padrão.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
             <a
               href="https://wa.me/5521969187827"
+              target="_blank"
               className="bg-cyan-500 text-black px-6 py-3 rounded-md font-semibold hover:opacity-90"
             >
               Falar no WhatsApp
@@ -45,28 +47,39 @@ export default function Home() {
       {/* SERVIÇOS */}
       <section id="servicos" className="py-20 bg-[#050b14]">
         <h2 className="text-3xl font-bold text-center mb-12">
-          Nossos Principais Serviços
+          Nossos Serviços
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto px-6">
           {[
-            "Pintura Automotiva",
-            "Polimento Técnico",
-            "Lanternagem Estrutural",
-            "Acabamento e Detalhamento",
+            {
+              title: "Pintura Automotiva",
+              desc: "Correções, retoques e pintura completa com acabamento profissional.",
+            },
+            {
+              title: "Polimento Técnico",
+              desc: "Remoção de riscos e recuperação de brilho com técnica avançada.",
+            },
+            {
+              title: "Lanternagem Estrutural",
+              desc: "Recuperação estrutural com precisão e segurança.",
+            },
+            {
+              title: "Acabamento e Detalhamento",
+              desc: "Detalhamento completo para elevar o padrão do seu veículo.",
+            },
           ].map((item) => (
             <div
-              key={item}
+              key={item.title}
               className="bg-[#0b1627] p-6 rounded-xl border border-cyan-500/20"
             >
               <h3 className="text-xl font-bold mb-2 text-cyan-400">
-                {item}
+                {item.title}
               </h3>
-              <p className="text-gray-300">
-                Serviço premium com padrão BLINK.
-              </p>
+              <p className="text-gray-300">{item.desc}</p>
               <a
                 href="https://wa.me/5521969187827"
+                target="_blank"
                 className="inline-block mt-4 text-cyan-400 text-sm"
               >
                 Solicitar orçamento →
@@ -83,34 +96,37 @@ export default function Home() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
-          {[1,2,3,4,5].map((i) => (
+          {[1, 2, 3, 4, 5].map((i) => (
             <img
               key={i}
               src={`/galeria/${i}.jpg`}
-              className="rounded-xl object-cover"
+              alt="Trabalho realizado pela Blink Estética Automotiva"
+              className="rounded-xl object-cover h-60 w-full"
             />
           ))}
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA FINAL */}
       <section className="py-20 bg-gradient-to-r from-cyan-600 to-sky-500 text-center">
-        <h2 className="text-4xl font-bold mb-4">
+        <h2 className="text-4xl font-bold mb-4 text-black">
           Agende seu serviço hoje mesmo
         </h2>
         <p className="mb-6 text-black/90">
-          Atendimento rápido no WhatsApp
+          Atendimento rápido e profissional pelo WhatsApp
         </p>
         <a
           href="https://wa.me/5521969187827"
+          target="_blank"
           className="bg-black text-cyan-400 px-8 py-4 rounded-md font-semibold"
         >
-          Falar no WhatsApp
+          Falar agora
         </a>
       </section>
 
+      {/* FOOTER */}
       <footer className="py-10 text-center text-gray-500 bg-black">
-        © 2024 BLINK Estética Automotiva
+        © {new Date().getFullYear()} BLINK Estética Automotiva — Barra da Tijuca
       </footer>
 
     </main>
