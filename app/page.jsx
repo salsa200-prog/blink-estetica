@@ -542,24 +542,253 @@ por dentro e por fora. Atendimento profissional e cordial.`,
         </div>
       </section>
 
-      <section id="contato" className="py-20 bg-[#050b14] text-center">
-        <h2 className="text-3xl font-bold mb-4">Contato</h2>
-        <p className="text-gray-300 mb-8">Atendimento rápido no WhatsApp.</p>
-        <a
-          href={whatsapp}
-          target="_blank"
-          className="bg-cyan-500 text-black px-8 py-4 rounded-md font-semibold"
-        >
-          Falar agora
-        </a>
-      </section>
+      {/* CONTATO (idêntico ao print) */}
+<section
+  id="contato"
+  className="py-24 bg-gradient-to-b from-[#050b14] via-[#070f1f] to-black"
+>
+  <div className="max-w-7xl mx-auto px-6">
+    {/* Título */}
+    <div className="text-center mb-14">
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-3">
+        Entre em Contato
+      </h2>
+      <p className="text-gray-400 text-base md:text-lg">
+        Atendimento rápido no WhatsApp. Fale com a gente!
+      </p>
+    </div>
 
-      <footer className="py-10 text-center text-gray-500 bg-black">
-        © {new Date().getFullYear()} BLINK Estética Automotiva
-      </footer>
-    </main>
+    <div className="grid lg:grid-cols-2 gap-8">
+      {/* COLUNA ESQUERDA */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <h3 className="text-2xl font-bold text-cyan-400 mb-6">Nossa Unidade</h3>
+
+        {/* Card Unidade */}
+        <div className="bg-[#06101f] border border-cyan-500/10 rounded-2xl p-6 mb-6">
+          <p className="text-cyan-400 font-semibold mb-2">
+            Unidade Barra da Tijuca
+          </p>
+          <p className="text-gray-200">Rua Joathur Bueno, 272</p>
+          <p className="text-gray-200 mb-4">Barra da Tijuca - RJ</p>
+
+          <p className="text-cyan-400 font-semibold">(21) 96918-7827</p>
+          <p className="text-cyan-400 font-semibold">(21) 98222-7699</p>
+        </div>
+
+        {/* Card Horário */}
+        <div className="bg-[#06101f] border border-cyan-500/10 rounded-2xl p-6 mb-6">
+          <p className="text-cyan-400 font-semibold mb-2">
+            Horário de Funcionamento
+          </p>
+          <p className="text-gray-200 font-semibold">
+            Segunda a Sexta: 08:00–18:00
+          </p>
+        </div>
+
+        {/* Card Telefone Fixo */}
+        <div className="bg-[#06101f] border border-cyan-500/10 rounded-2xl p-6 mb-8">
+          <p className="text-cyan-400 font-semibold mb-2">Telefone Fixo</p>
+          <p className="text-gray-200">(21) 2439-4259</p>
+        </div>
+
+        {/* Botões */}
+        <div className="grid sm:grid-cols-2 gap-4">
+          <a
+            href="https://wa.me/5521969187827"
+            target="_blank"
+            rel="noreferrer"
+            className="h-12 rounded-xl bg-cyan-500 hover:bg-cyan-600 text-black font-semibold inline-flex items-center justify-center gap-2 transition"
+          >
+            <PhoneMiniIcon className="w-5 h-5" />
+            WhatsApp
+          </a>
+
+          <a
+            href="https://www.google.com/maps?q=Rua+Joathur+Bueno,+272,+Barra+da+Tijuca,+RJ"
+            target="_blank"
+            rel="noreferrer"
+            className="h-12 rounded-xl bg-white text-cyan-600 font-semibold inline-flex items-center justify-center gap-2 border border-cyan-500/20 hover:bg-gray-50 transition"
+          >
+            <PinMiniIcon className="w-5 h-5" />
+            Como Chegar
+          </a>
+        </div>
+      </div>
+
+      {/* COLUNA DIREITA (FORMULÁRIO) */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <h3 className="text-2xl font-bold text-white mb-6">
+          Solicitar Orçamento
+        </h3>
+
+        {/* Campos */}
+        <div className="space-y-5">
+          {/* Nome */}
+          <div>
+            <label className="block text-sm text-gray-300 font-medium mb-2">
+              Nome Completo
+            </label>
+            <input
+              id="c_nome"
+              type="text"
+              placeholder="Seu nome completo"
+              className="w-full h-12 rounded-xl bg-[#06101f] border border-cyan-500/10 px-4 text-gray-200 placeholder:text-gray-500 outline-none focus:border-cyan-400/40"
+            />
+          </div>
+
+          {/* Telefone */}
+          <div>
+            <label className="block text-sm text-gray-300 font-medium mb-2">
+              Telefone / WhatsApp
+            </label>
+            <input
+              id="c_tel"
+              type="tel"
+              placeholder="(00) 00000-0000"
+              className="w-full h-12 rounded-xl bg-[#06101f] border border-cyan-500/10 px-4 text-gray-200 placeholder:text-gray-500 outline-none focus:border-cyan-400/40"
+            />
+          </div>
+
+          {/* Tipo atendimento */}
+          <div>
+            <label className="block text-sm text-gray-300 font-medium mb-2">
+              Tipo de Atendimento
+            </label>
+            <select
+              id="c_tipo"
+              className="w-full h-12 rounded-xl bg-[#06101f] border border-cyan-500/10 px-4 text-gray-200 outline-none focus:border-cyan-400/40"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Selecione...
+              </option>
+              <option>Particular</option>
+              <option>Seguradora</option>
+              <option>Frota / Empresa</option>
+            </select>
+          </div>
+
+          {/* Serviço interesse */}
+          <div>
+            <label className="block text-sm text-gray-300 font-medium mb-2">
+              Serviço de Interesse
+            </label>
+            <select
+              id="c_servico"
+              className="w-full h-12 rounded-xl bg-[#06101f] border border-cyan-500/10 px-4 text-gray-200 outline-none focus:border-cyan-400/40"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Selecione o serviço...
+              </option>
+              <option>Pintura Automotiva</option>
+              <option>Polimento Técnico</option>
+              <option>Lanternagem Estrutural</option>
+              <option>Acabamento e Detalhamento</option>
+            </select>
+          </div>
+
+          {/* Descrição */}
+          <div>
+            <label className="block text-sm text-gray-300 font-medium mb-2">
+              Descrição do Serviço
+            </label>
+            <textarea
+              id="c_desc"
+              rows={4}
+              placeholder="Descreva o serviço necessário (ex: polimento no capô, pintura no para-choque...)"
+              className="w-full rounded-xl bg-[#06101f] border border-cyan-500/10 px-4 py-3 text-gray-200 placeholder:text-gray-500 outline-none focus:border-cyan-400/40 resize-none"
+            />
+          </div>
+
+          {/* Botão enviar */}
+          <button
+            type="button"
+            onClick={() => {
+              const nome = document.getElementById("c_nome")?.value?.trim();
+              const tel = document.getElementById("c_tel")?.value?.trim();
+              const tipo = document.getElementById("c_tipo")?.value;
+              const servico = document.getElementById("c_servico")?.value;
+              const desc = document.getElementById("c_desc")?.value?.trim();
+
+              const msg = `Olá! Gostaria de solicitar um orçamento.\n\n` +
+                `Nome: ${nome || "-"}\n` +
+                `Telefone: ${tel || "-"}\n` +
+                `Tipo: ${tipo || "-"}\n` +
+                `Serviço: ${servico || "-"}\n\n` +
+                `Descrição:\n${desc || "-"}`;
+
+              const url =
+                "https://wa.me/5521969187827?text=" +
+                encodeURIComponent(msg);
+
+              window.open(url, "_blank");
+            }}
+            className="w-full h-12 rounded-xl bg-cyan-500 hover:bg-cyan-600 text-black font-semibold inline-flex items-center justify-center gap-2 transition"
+          >
+            Enviar pelo WhatsApp
+            <ArrowRightMiniIcon className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+/* ÍCONES MINI (cole no final do arquivo, junto dos outros ícones) */
+function PhoneMiniIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+    </svg>
   );
 }
+
+function PinMiniIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function ArrowRightMiniIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="M13 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 
 /* ÍCONES (sem depender de biblioteca) */
 function PhoneIcon({ className }) {
