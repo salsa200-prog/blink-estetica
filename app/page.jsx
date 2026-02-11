@@ -440,12 +440,94 @@ export default function Home() {
 </section>
 
 
-      <section id="avaliacoes" className="py-20 bg-[#050b14]">
-        <h2 className="text-3xl font-bold text-center mb-12">Avaliações</h2>
-        <div className="max-w-5xl mx-auto px-6 text-gray-300 text-center">
-          Clientes satisfeitos e resultados que falam por si.
+    {/* AVALIAÇÕES */}
+<section
+  id="avaliacoes"
+  className="py-24 bg-gradient-to-b from-[#050b14] via-[#070f1f] to-black"
+>
+  <div className="max-w-7xl mx-auto px-6">
+
+    {/* Título */}
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        Resultados que Falam por Si
+      </h2>
+      <p className="text-gray-400 text-base md:text-lg">
+        Veja o que nossos clientes dizem sobre nosso trabalho
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      {[
+        {
+          text: `Levei meu UP! Cheio de amassados e para-choque quebrado. 
+Essa oficina deixou ele LINDO de novo! São detalhistas, cuidadosos e muito profissionais. 
+Pintura perfeita, lisinha, macia ao toque, um brilho perfeito. Fiquei impressionada e muito feliz! 
+Super recomendo! Meu carro tá lindo! E entregaram antes do prazo!`,
+          name: "Rosa Maria de Carvalho Wanderley",
+        },
+        {
+          text: `Entregaram meu carro em 24h, serviço de lanternagem e pintura muito bem executado 
+e o valor cobrado muito justo. Ficou excelente! e ainda deram uma geral. 
+Farei outros serviços com certeza`,
+          name: "Renato Veloso",
+        },
+        {
+          text: `Atendimento ótimo! Cumpriram o prazo! Mão de obra impecável! 
+Ainda entregaram o carro lavado e aspirado, nota 10!`,
+          name: "José Pereira",
+        },
+        {
+          text: `Foi uma ótima experiência. Pessoal sério, comprometido com prazos 
+com acabamento muito atenciosos sempre informando o progresso do serviço. 
+Curti muito mesmo.`,
+          name: "Mayra Paula Cristina",
+        },
+        {
+          text: `Atendimento e serviços espetaculares. No meu caso, recebi meu carro 
+com um dia de antecedência. Com certeza indico para todos os meus amigos. 
+Impecável.`,
+          name: "Vanessa Moreira",
+        },
+        {
+          text: `Deram 10 dias, foi me entregue em 5 dias. Entregaram o carro lavado 
+por dentro e por fora. Atendimento profissional e cordial.`,
+          name: "Eduardo Junior",
+        },
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8 flex flex-col justify-between"
+        >
+          {/* Estrelas */}
+          <div className="flex gap-1 text-cyan-400 mb-4 text-lg">
+            ★★★★★
+          </div>
+
+          {/* Texto */}
+          <p className="text-gray-300 text-sm leading-relaxed mb-6 whitespace-pre-line">
+            "{item.text}"
+          </p>
+
+          {/* Nome */}
+          <span className="text-cyan-400 font-medium text-sm">
+            – {item.name}
+          </span>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Botão Google */}
+    <div className="mt-14 text-center">
+      <a
+        href="https://www.google.com/search?q=blink+est%C3%A9tica+automotiva"
+        target="_blank"
+        className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-6 py-3 rounded-lg transition"
+      >
+        ⭐ Ver av
+
 
       <section id="galeria" className="py-20 bg-black">
         <h2 className="text-3xl font-bold text-center mb-12">Galeria</h2>
