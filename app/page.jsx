@@ -181,48 +181,59 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO (aqui você mantém o seu) */}
-      <section
-        id="hero"
-        className="min-h-screen flex items-center justify-center px-6 text-center"
-        style={{
-          backgroundImage: "url('/hero.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+      {/* HERO */}
+<section
+  id="hero"
+  className="relative min-h-screen flex items-center justify-center px-6 text-center"
+  style={{
+    backgroundImage: "url('/hero.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay escuro SUAVE */}
+  <div className="absolute inset-0 bg-black/55"></div>
+
+  {/* Conteúdo */}
+  <div className="relative z-10 max-w-5xl">
+
+    {/* Selo */}
+    <span className="inline-flex items-center gap-2 mb-6 px-5 py-2 text-sm font-medium rounded-full bg-cyan-500/15 text-cyan-400 backdrop-blur">
+      ✦ Onde estética vira padrão
+    </span>
+
+    {/* Título */}
+    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+      Oficina Estética Automotiva na{" "}
+      <span className="text-cyan-400">Barra da Tijuca</span>
+    </h1>
+
+    {/* Subtítulo */}
+    <p className="text-gray-200 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+      Especialistas em lanternagem, pintura e polimento técnico.
+      Qualidade, transparência e confiança em cada detalhe.
+    </p>
+
+    {/* Botões */}
+    <div className="flex gap-4 justify-center flex-wrap">
+      <a
+        href="https://wa.me/5521969187827"
+        target="_blank"
+        className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black px-7 py-3 rounded-lg font-semibold transition"
       >
-        <div className="bg-black/70 backdrop-blur-md p-10 rounded-xl max-w-4xl">
-          <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-cyan-500/20 text-cyan-400">
-            Onde estética vira padrão
-          </span>
+        WhatsApp
+      </a>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Oficina Estética Automotiva na{" "}
-            <span className="text-cyan-400">Barra da Tijuca</span>
-          </h1>
+      <a
+        href="#servicos"
+        className="border border-cyan-400 text-cyan-400 px-7 py-3 rounded-lg hover:bg-cyan-400/10 transition"
+      >
+        Ver Serviços
+      </a>
+    </div>
+  </div>
+</section>
 
-          <p className="text-gray-300 mb-8">
-            Especialistas em pintura automotiva, polimento técnico e lanternagem
-            estrutural.
-          </p>
-
-          <div className="flex gap-4 justify-center flex-wrap">
-            <a
-              href={whatsapp}
-              target="_blank"
-              className="bg-cyan-500 text-black px-6 py-3 rounded-md font-semibold hover:opacity-90"
-            >
-              Falar no WhatsApp
-            </a>
-            <button
-              onClick={() => scrollToId("servicos")}
-              className="border border-cyan-500 text-cyan-400 px-6 py-3 rounded-md hover:bg-cyan-500/10"
-            >
-              Ver serviços
-            </button>
-          </div>
-        </div>
-      </section>
 
       {/* Seções (precisa ter esses IDs pro menu funcionar) */}
       <section id="servicos" className="py-20 bg-[#050b14]">
