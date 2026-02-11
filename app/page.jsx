@@ -267,6 +267,38 @@ export default function Home() {
 
   </div>
 </section>
+      {/* SOBRE A BLINK */}
+<section className="py-20 bg-gradient-to-b from-[#050b14] to-black">
+  <div className="max-w-5xl mx-auto px-6 text-center">
+
+    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
+      Sobre a <span className="text-cyan-400">BLINK Estética Automotiva</span>
+    </h2>
+
+    <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10">
+      Aqui você encontra qualidade, transparência e confiança. Lanternagem,
+      pintura e acabamento com foco em precisão, cuidado e excelência.
+      Transformamos a estética do seu veículo em um padrão de qualidade superior
+      na Barra da Tijuca.
+    </p>
+
+    <div className="flex flex-wrap justify-center gap-8 text-sm md:text-base">
+      <div className="flex items-center gap-2 text-cyan-400 font-semibold">
+        ✓ <span className="text-gray-200">Desde 2019</span>
+      </div>
+
+      <div className="flex items-center gap-2 text-cyan-400 font-semibold">
+        ✓ <span className="text-gray-200">Resultados que falam por si</span>
+      </div>
+
+      <div className="flex items-center gap-2 text-cyan-400 font-semibold">
+        ✓ <span className="text-gray-200">Cuidado em cada detalhe</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 
 
