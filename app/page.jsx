@@ -331,12 +331,114 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="porque" className="py-20 bg-black">
-        <h2 className="text-3xl font-bold text-center mb-12">Por que nós?</h2>
-        <div className="max-w-5xl mx-auto px-6 text-gray-300 text-center">
-          Qualidade, transparência e confiança em cada detalhe.
+      {/* POR QUE NÓS */}
+<section
+  id="porque"
+  className="py-24 bg-gradient-to-b from-[#050b14] to-black"
+>
+  <div className="max-w-7xl mx-auto px-6">
+
+    {/* Título */}
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+        Por que escolher a{" "}
+        <span className="text-cyan-400">BLINK Estética Automotiva</span>?
+      </h2>
+      <p className="text-gray-400 text-base md:text-lg">
+        6 motivos para confiar em nosso trabalho
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      {/* Card 1 */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+          ✨
         </div>
-      </section>
+        <h3 className="text-lg font-bold mb-2">
+          Cuidado em Cada Detalhe
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Na Blink, o segredo está nos detalhes. Cada serviço é realizado com
+          precisão e dedicação.
+        </p>
+      </div>
+
+      {/* Card 2 */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+          ⚡
+        </div>
+        <h3 className="text-lg font-bold mb-2">
+          Atendimento Rápido no WhatsApp
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Atendimento ágil e direto pelo WhatsApp para orçamentos e
+          agendamentos.
+        </p>
+      </div>
+
+      {/* Card 3 */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+          👍
+        </div>
+        <h3 className="text-lg font-bold mb-2">
+          Resultados que Falam por Si
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Trabalho de excelência visível na qualidade de cada serviço entregue.
+        </p>
+      </div>
+
+      {/* Card 4 */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+          👥
+        </div>
+        <h3 className="text-lg font-bold mb-2">
+          Equipe Especializada
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Profissionais experientes focados em estética automotiva de alta
+          qualidade.
+        </p>
+      </div>
+
+      {/* Card 5 */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+          🛡️
+        </div>
+        <h3 className="text-lg font-bold mb-2">
+          Garantia de Qualidade
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Todos os serviços realizados com garantia, proporcionando total
+          tranquilidade.
+        </p>
+      </div>
+
+      {/* Card 6 */}
+      <div className="bg-[#0b1627] border border-cyan-500/10 rounded-2xl p-8">
+        <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+          🏆
+        </div>
+        <h3 className="text-lg font-bold mb-2">
+          Estética que Vira Padrão
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Nossa missão é transformar estética em padrão de qualidade na Barra
+          da Tijuca.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       <section id="avaliacoes" className="py-20 bg-[#050b14]">
         <h2 className="text-3xl font-bold text-center mb-12">Avaliações</h2>
