@@ -706,30 +706,126 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="py-20 bg-gradient-to-r from-cyan-600 to-sky-500 text-center">
-        <h2 className="text-4xl font-extrabold mb-4">
-          Agende seu serviço hoje mesmo
-        </h2>
-        <p className="mb-8 text-black/90 font-semibold">
-          Atendimento rápido e profissional
-        </p>
-        <a
-          href={whatsapp}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center bg-black text-cyan-300 px-10 py-4 rounded-xl font-extrabold hover:opacity-90"
-        >
-          Falar agora
-        </a>
+            {/* CTA FINAL (igual ao print) */}
+      <section className="bg-gradient-to-r from-cyan-600 to-sky-500 py-20 md:py-28 text-center">
+        <div className="max-w-4xl mx-auto px-6">
+          <span className="inline-flex items-center gap-2 mb-8 px-6 py-3 text-sm font-semibold rounded-full bg-black/15 text-white backdrop-blur">
+            ✦ Onde estética vira padrão
+          </span>
+
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
+            Agende seu serviço hoje mesmo
+          </h2>
+
+          <p className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+            Entre em contato pelo WhatsApp e descubra a qualidade que transformou
+            a estética automotiva na Barra da Tijuca!
+          </p>
+
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 bg-black text-cyan-300 px-7 py-4 rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              <PhoneIcon className="w-5 h-5" />
+              Falar no WhatsApp
+            </a>
+
+            {/* botao branco "vazio" igual o print */}
+            <div className="h-14 w-40 rounded-lg bg-white shadow-sm" />
+          </div>
+        </div>
       </section>
 
-      <footer className="py-10 text-center text-gray-500 bg-black">
-        © {new Date().getFullYear()} BLINK Estética Automotiva — Barra da Tijuca
+      {/* FOOTER (igual ao print) */}
+      <footer className="bg-black text-white">
+        <div className="max-w-7xl mx-auto px-6 py-14">
+          <div className="grid md:grid-cols-3 gap-10 items-start">
+            {/* Coluna 1 */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <img
+                  src="/logo.png"
+                  alt="BLINK"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div className="text-lg font-bold">
+                  BLINK <span className="text-cyan-400">ESTÉTICA AUTOMOTIVA</span>
+                </div>
+              </div>
+
+              <p className="text-gray-400 leading-relaxed max-w-sm">
+                Onde estética vira padrão. Especialistas em Lanternagem, pintura e
+                polimento técnico na Barra da Tijuca.
+              </p>
+
+              <p className="text-gray-500 text-sm mt-6">
+                CNPJ: 33.795.707/0001-90
+              </p>
+            </div>
+
+            {/* Coluna 2 */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Serviços</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center gap-3">
+                  <CheckIcon className="w-5 h-5 text-cyan-400" />
+                  Pintura Automotiva
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckIcon className="w-5 h-5 text-cyan-400" />
+                  Polimento Técnico
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckIcon className="w-5 h-5 text-cyan-400" />
+                  Lanternagem
+                </li>
+              </ul>
+            </div>
+
+            {/* Coluna 3 */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Contato</h3>
+
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center gap-3">
+                  <PhoneIcon className="w-5 h-5 text-cyan-400" />
+                  (21) 96918-7827
+                </li>
+                <li className="flex items-center gap-3">
+                  <PhoneIcon className="w-5 h-5 text-cyan-400" />
+                  (21) 98222-7699
+                </li>
+                <li className="flex items-center gap-3">
+                  <PhoneIcon className="w-5 h-5 text-cyan-400" />
+                  (21) 2439-4259
+                </li>
+                <li className="flex items-center gap-3">
+                  <PinIcon className="w-5 h-5 text-cyan-400" />
+                  Barra da Tijuca - RJ
+                </li>
+              </ul>
+
+              <a
+                href="https://instagram.com/blinkesteticaauto"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block mt-6 text-cyan-400 font-semibold hover:opacity-90"
+              >
+                @blinkesteticaauto
+              </a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-500 text-sm">
+            © {new Date().getFullYear()} BLINK Estética Automotiva LTDA. Todos os
+            direitos reservados.
+          </div>
+        </div>
       </footer>
-    </main>
-  );
-}
+
 
 /* =========================
    ÍCONES (sem biblioteca)
