@@ -233,6 +233,41 @@ export default function Home() {
     </div>
   </div>
 </section>
+      {/* SEGURADORAS */}
+<section className="py-14 bg-gradient-to-b from-black to-[#050b14]">
+  <div className="max-w-6xl mx-auto px-6 text-center">
+    
+    <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2">
+      Trabalhamos com as melhores seguradoras do mercado
+    </h3>
+
+    <p className="text-gray-400 mb-8">
+      Atendemos todos os sinistros com agilidade e profissionalismo
+    </p>
+
+    <div className="flex flex-wrap justify-center gap-6">
+      <div className="bg-white/10 backdrop-blur-md px-10 py-5 rounded-xl border border-white/20">
+        <span className="text-white font-bold text-lg">Porto Seguro</span>
+      </div>
+
+      <div className="bg-white/10 backdrop-blur-md px-10 py-5 rounded-xl border border-white/20">
+        <span className="text-white font-bold text-lg">Azul Seguros</span>
+      </div>
+
+      <div className="bg-white/10 backdrop-blur-md px-10 py-5 rounded-xl border border-white/20">
+        <span className="text-white font-bold text-lg">Itaú Seguros</span>
+      </div>
+
+      <div className="bg-white/10 backdrop-blur-md px-10 py-5 rounded-xl border border-white/20">
+        <span className="text-white font-bold text-lg">
+          e demais seguradoras
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 
       {/* Seções (precisa ter esses IDs pro menu funcionar) */}
