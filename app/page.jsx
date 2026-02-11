@@ -5,8 +5,18 @@ import { useMemo, useState } from "react";
 export default function Home() {
   const [open, setOpen] = useState(false);
 
+  // Form (Contato)
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [servico, setServico] = useState("");
+  const [descricao, setDescricao] = useState("");
+
   const whatsappNumber = "5521969187827";
-  const whatsapp = `https://wa.me/${whatsappNumber}`;
+  const whatsappLink = useMemo(
+    () => `https://wa.me/${whatsappNumber}`,
+    [whatsappNumber]
+  );
 
   const scrollToId = (id) => {
     setOpen(false);
@@ -15,118 +25,19 @@ export default function Home() {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const services = useMemo(
-    () => [
-      "Pintura Automotiva",
-      "Polimento Técnico",
-      "Lanternagem Estrutural",
-      "Acabamento e Detalhamento",
-      // (removido “Cristalização” como você pediu)
-    ],
-    []
-  );
+  const enviarWhatsApp = () => {
+    const msg =
+      `Olá! Quero solicitar orçamento.\n\n` +
+      `Nome: ${nome || "-"}\n` +
+      `Telefone/WhatsApp: ${telefone || "-"}\n` +
+      `Tipo de atendimento: ${tipo || "-"}\n` +
+      `Serviço de interesse: ${servico || "-"}\n\n` +
+      `Descrição: ${descricao || "-"}`;
 
-  const reasons = useMemo(
-    () => [
-      {
-        title: "Cuidado em Cada Detalhe",
-        desc: "Na Blink, o segredo está nos detalhes. Cada serviço é realizado com precisão e dedicação.",
-        icon: SparkIcon,
-      },
-      {
-        title: "Atendimento Rápido no WhatsApp",
-        desc: "Atendimento ágil e direto pelo WhatsApp para orçamentos e agendamentos.",
-        icon: BoltIcon,
-      },
-      {
-        title: "Resultados que Falam por Si",
-        desc: "Trabalho de excelência visível na qualidade de cada serviço entregue.",
-        icon: LikeIcon,
-      },
-      {
-        title: "Equipe Especializada",
-        desc: "Profissionais experientes focados em estética automotiva de alta qualidade.",
-        icon: UsersIcon,
-      },
-      {
-        title: "Garantia de Qualidade",
-        desc: "Todos os serviços realizados com garantia, proporcionando total tranquilidade.",
-        icon: ShieldIcon,
-      },
-      {
-        title: "Estética que Vira Padrão",
-        desc: "Nossa missão é transformar estética em padrão de qualidade na Barra da Tijuca.",
-        icon: BadgeIcon,
-      },
-    ],
-    []
-  );
-
-  const reviews = useMemo(
-    () => [
-      {
-        name: "Rosa Maria de Carvalho Wanderley",
-        text:
-          "Levei meu UP! Cheio de amassados e para-choque quebrado. Essa oficina deixou ele LINDO de novo! " +
-          "São detalhistas, cuidadosos e muito profissionais. Pintura perfeita, lisinha, macia ao toque, um brilho perfeito. " +
-          "Fiquei impressionada e muito feliz! Super recomendo! Meu carro tá lindo! E entregaram antes do prazo!",
-      },
-      {
-        name: "Renato Veloso",
-        text:
-          "Entregaram meu carro em 24h, serviço de lanternagem e pintura muito bem executado e o valor cobrado muito justo. " +
-          "Ficou excelente! e ainda deram uma geral. Farei outros serviços com certeza.",
-      },
-      {
-        name: "José Pereira",
-        text:
-          "Atendimento ótimo! Cumprem o prazo! Mão de obra impecável! Ainda entregaram o carro lavado e aspirado, nota 10!",
-      },
-      {
-        name: "Mayra Paula Cristina",
-        text:
-          "Foi uma ótima experiência. Pessoal sério, comprometido com prazos com acabamento muito atenciosos sempre informando o progresso do serviço. Curti muito mesmo.",
-      },
-      {
-        name: "Vanessa Moreira",
-        text:
-          "Atendimento e serviços espetaculares. No meu caso, recebi meu carro com um dia de antecedência. Com certeza indico para todos os meus amigos. Impecável.",
-      },
-      {
-        name: "Eduardo Junior",
-        text:
-          "Deram 10 dias, foi me entregue em 5 dias. Entregaram o carro lavado por dentro e por fora. Atendimento profissional e cordial.",
-      },
-    ],
-    []
-  );
-
-  // CONTATO (para o formulário enviar no WhatsApp)
-  const [form, setForm] = useState({
-    nome: "",
-    telefone: "",
-    tipo: "",
-    servico: "",
-    desc: "",
-  });
-
-  const buildWhatsAppMessage = () => {
-    const lines = [
-      "Olá! Gostaria de solicitar um orçamento na BLINK Estética Automotiva.",
-      "",
-      `Nome: ${form.nome || "-"}`,
-      `Telefone/WhatsApp: ${form.telefone || "-"}`,
-      `Tipo de atendimento: ${form.tipo || "-"}`,
-      `Serviço de interesse: ${form.servico || "-"}`,
-      `Descrição: ${form.desc || "-"}`,
-    ];
-    return encodeURIComponent(lines.join("\n"));
-  };
-
-  const handleSubmitWhatsApp = (e) => {
-    e.preventDefault();
-    const msg = buildWhatsAppMessage();
-    window.open(`${whatsapp}?text=${msg}`, "_blank");
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      msg
+    )}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -137,17 +48,17 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
             <div className="flex flex-wrap items-center justify-center gap-4">
               <div className="flex items-center gap-2">
-                <PhoneMiniIcon className="w-4 h-4" />
+                <PhoneIcon className="w-4 h-4" />
                 <span>(21) 96918-7827 / (21) 98222-7699</span>
               </div>
               <div className="flex items-center gap-2">
-                <PinMiniIcon className="w-4 h-4" />
+                <PinIcon className="w-4 h-4" />
                 <span>Barra da Tijuca - RJ</span>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <ClockMiniIcon className="w-4 h-4" />
+              <ClockIcon className="w-4 h-4" />
               <span>Atendimento rápido no WhatsApp</span>
             </div>
           </div>
@@ -164,7 +75,7 @@ export default function Home() {
               className="flex items-center gap-3 cursor-pointer text-left"
               onClick={() => scrollToId("hero")}
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-cyan-500 to-sky-600 rounded-xl flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden bg-white/10 border border-white/10">
                 <img
                   src="/logo.png"
                   alt="BLINK Logo"
@@ -233,9 +144,9 @@ export default function Home() {
 
               <li>
                 <a
-                  href={whatsapp}
+                  href={whatsappLink}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold h-9 px-4 rounded-md inline-flex items-center justify-center"
                 >
                   WhatsApp
@@ -250,7 +161,7 @@ export default function Home() {
               aria-label="Abrir menu"
               onClick={() => setOpen((v) => !v)}
             >
-              <MenuMiniIcon className="w-6 h-6" />
+              <MenuIcon className="w-6 h-6" />
             </button>
           </nav>
 
@@ -296,9 +207,9 @@ export default function Home() {
                   </button>
 
                   <a
-                    href={whatsapp}
+                    href={whatsappLink}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="mt-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-4 py-3 rounded-lg text-center"
                   >
                     WhatsApp
@@ -310,10 +221,10 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO (igual ao print, fundo com overlay transparente) */}
+      {/* HERO (estilo do print) */}
       <section
         id="hero"
-        className="relative min-h-[78vh] md:min-h-screen flex items-center justify-center px-6 text-center"
+        className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center px-6 text-center"
         style={{
           backgroundImage: "url('/hero.jpg')",
           backgroundSize: "cover",
@@ -321,11 +232,12 @@ export default function Home() {
         }}
       >
         {/* overlay */}
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
 
-        <div className="relative z-10 max-w-5xl">
-          <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/20 backdrop-blur">
-            <SparkMiniIcon className="w-4 h-4" />
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 backdrop-blur">
+            <SparkIcon className="w-4 h-4" />
             Onde estética vira padrão
           </span>
 
@@ -335,25 +247,25 @@ export default function Home() {
           </h1>
 
           <p className="text-gray-200 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
-            Especialistas em lanternagem, pintura e polimento técnico. Qualidade,
+            Especialistas em Lanternagem, pintura e polimento técnico. Qualidade,
             transparência e confiança em cada detalhe.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
             <a
-              href={whatsapp}
+              href={whatsappLink}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black px-7 py-3 rounded-lg font-semibold transition"
             >
-              <PhoneCallMiniIcon className="w-5 h-5" />
+              <PhoneIcon className="w-5 h-5" />
               WhatsApp
             </a>
 
             <button
               type="button"
               onClick={() => scrollToId("servicos")}
-              className="border border-cyan-300 text-cyan-200 px-7 py-3 rounded-lg hover:bg-cyan-400/10 transition"
+              className="inline-flex items-center justify-center border border-cyan-400 text-cyan-300 px-7 py-3 rounded-lg hover:bg-cyan-400/10 transition"
             >
               Ver Serviços
             </button>
@@ -361,22 +273,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEGURADORAS (igual ao print) */}
-      <section className="bg-gradient-to-b from-[#060b14] to-[#050b14] py-16">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold">
+      {/* SEGURADORAS (print) */}
+      <section className="py-14 bg-[#050b14]">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-center">
             Trabalhamos com as melhores seguradoras do mercado
           </h2>
-          <p className="text-gray-400 mt-3">
+          <p className="text-center text-gray-400 mt-2">
             Atendemos todos os sinistros com agilidade e profissionalismo
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-6">
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
             {["Porto Seguro", "Azul Seguros", "Itaú Seguros", "e demais seguradoras"].map(
               (s) => (
                 <div
                   key={s}
-                  className="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-gray-100 font-semibold shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+                  className="rounded-xl bg-white/5 border border-white/10 text-center py-4 font-semibold text-gray-100"
                 >
                   {s}
                 </div>
@@ -386,302 +298,206 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SOBRE (igual ao print) */}
-      <section className="bg-[#050b14] py-16">
+      {/* SOBRE (print) */}
+      <section className="py-16 bg-[#0a1220]">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold">
-            Sobre a <span className="text-white">BLINK</span> Estética Automotiva
+            Sobre a BLINK Estética Automotiva
           </h2>
-          <p className="text-gray-300 mt-5 max-w-4xl mx-auto leading-relaxed">
+
+          <p className="text-gray-300 max-w-5xl mx-auto mt-4 leading-relaxed">
             Aqui você encontra qualidade, transparência e confiança. Lanternagem,
             pintura e acabamento com foco em precisão, cuidado e excelência.
             Transformamos a estética do seu veículo em um padrão de qualidade
             superior na Barra da Tijuca.
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-10 text-gray-300">
-            {[
-              "Desde 2019",
-              "Resultados que falam por si",
-              "Cuidado em cada detalhe",
-            ].map((t) => (
-              <div key={t} className="inline-flex items-center gap-3">
-                <CheckMiniIcon className="w-5 h-5 text-cyan-400" />
-                <span className="text-sm md:text-base">{t}</span>
-              </div>
-            ))}
+          <div className="mt-10 flex flex-col md:flex-row gap-6 items-center justify-center text-gray-200">
+            <div className="inline-flex items-center gap-2">
+              <CheckIcon className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm md:text-base text-gray-300">
+                Desde 2019
+              </span>
+            </div>
+            <div className="inline-flex items-center gap-2">
+              <CheckIcon className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm md:text-base text-gray-300">
+                Resultados que falam por si
+              </span>
+            </div>
+            <div className="inline-flex items-center gap-2">
+              <CheckIcon className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm md:text-base text-gray-300">
+                Cuidado em cada detalhe
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SERVIÇOS */}
-      <section id="servicos" className="py-20 bg-black">
+      {/* SERVIÇOS (sem cristalização, como você pediu) */}
+      <section id="servicos" className="py-20 bg-[#050b14]">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">
-            Nossos Principais Serviços
+            Nossos Serviços
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {services.map((item) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { t: "Pintura Automotiva", d: "Serviço profissional com acabamento de alto padrão." },
+              { t: "Polimento Técnico", d: "Serviço profissional com acabamento de alto padrão." },
+              { t: "Lanternagem", d: "Serviço profissional com acabamento de alto padrão." },
+              { t: "Detalhamento", d: "Serviço profissional com acabamento de alto padrão." },
+              { t: "Acabamento", d: "Serviço profissional com acabamento de alto padrão." },
+            ].map((card) => (
               <div
-                key={item}
-                className="bg-[#0b1627] p-6 rounded-2xl border border-cyan-500/15 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+                key={card.t}
+                className="rounded-2xl bg-[#0b1627] border border-cyan-500/15 p-6 shadow-[0_0_0_1px_rgba(34,211,238,0.06)]"
               >
-                <h3 className="text-xl font-extrabold mb-2 text-cyan-300">
-                  {item}
-                </h3>
-                <p className="text-gray-300">
-                  Serviço profissional com padrão BLINK e acabamento premium.
-                </p>
-
-                <a
-                  href={whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 mt-4 text-cyan-300 text-sm font-semibold hover:text-cyan-200"
-                >
-                  Solicitar orçamento <ArrowRightMiniIcon className="w-4 h-4" />
-                </a>
+                <h3 className="text-lg font-bold">{card.t}</h3>
+                <p className="text-gray-400 mt-2 text-sm">{card.d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* POR QUE NÓS (igual ao print) */}
-      <section id="porque" className="py-20 bg-[#050b14]">
+      {/* POR QUE NÓS (print com 6 cards) */}
+      <section id="porque" className="py-20 bg-[#0a1220]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold">
-              Por que escolher a BLINK Estética Automotiva?
-            </h2>
-            <p className="text-gray-400 mt-3">6 motivos para confiar em nosso trabalho</p>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center">
+            Por que escolher a BLINK Estética Automotiva?
+          </h2>
+          <p className="text-center text-gray-400 mt-3">
+            6 motivos para confiar em nosso trabalho
+          </p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
-            {reasons.map((r) => {
-              const Icon = r.icon;
-              return (
-                <div
-                  key={r.title}
-                  className="bg-[#0b1627] rounded-2xl p-8 border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400/20 flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-cyan-300" />
-                  </div>
-                  <h3 className="text-xl font-extrabold">{r.title}</h3>
-                  <p className="text-gray-400 mt-3 leading-relaxed">{r.desc}</p>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <SparkBoxIcon />,
+                t: "Cuidado em Cada Detalhe",
+                d: "Na Blink, o segredo está nos detalhes. Cada serviço é realizado com precisão e dedicação.",
+              },
+              {
+                icon: <BoltBoxIcon />,
+                t: "Atendimento Rápido no WhatsApp",
+                d: "Atendimento ágil e direto pelo WhatsApp para orçamentos e agendamentos.",
+              },
+              {
+                icon: <ThumbBoxIcon />,
+                t: "Resultados que Falam por Si",
+                d: "Trabalho de excelência visível na qualidade de cada serviço entregue.",
+              },
+              {
+                icon: <UsersBoxIcon />,
+                t: "Equipe Especializada",
+                d: "Profissionais experientes focados em estética automotiva de alta qualidade.",
+              },
+              {
+                icon: <ShieldBoxIcon />,
+                t: "Garantia de Qualidade",
+                d: "Todos os serviços realizados com garantia, proporcionando total tranquilidade.",
+              },
+              {
+                icon: <MedalBoxIcon />,
+                t: "Estética que Vira Padrão",
+                d: "Nossa missão é transformar estética em padrão de qualidade na Barra da Tijuca.",
+              },
+            ].map((c) => (
+              <div
+                key={c.t}
+                className="rounded-2xl bg-[#0b1627] border border-white/10 p-7 shadow-[0_0_0_1px_rgba(255,255,255,0.04)]"
+              >
+                <div className="w-14 h-14 rounded-xl bg-cyan-500/20 border border-cyan-400/20 flex items-center justify-center text-cyan-300 mb-6">
+                  {c.icon}
                 </div>
-              );
-            })}
+                <h3 className="text-xl font-extrabold">{c.t}</h3>
+                <p className="text-gray-400 mt-3 leading-relaxed text-sm">
+                  {c.d}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* AVALIAÇÕES (igual ao print) */}
-      <section id="avaliacoes" className="py-20 bg-black">
+      {/* AVALIAÇÕES (print) */}
+      <section id="avaliacoes" className="py-20 bg-[#050b14]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold">
-              Resultados que Falam por Si
-            </h2>
-            <p className="text-gray-400 mt-3">
-              Veja o que nossos clientes dizem sobre nosso trabalho
-            </p>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center">
+            Resultados que Falam por Si
+          </h2>
+          <p className="text-center text-gray-400 mt-3">
+            Veja o que nossos clientes dizem sobre nosso trabalho
+          </p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
-            {reviews.map((rv, idx) => (
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Rosa Maria de Carvalho Wanderley",
+                text:
+                  "“Levei meu UP! Cheio de amassados e para-choque quebrado. Essa oficina deixou ele LINDO de novo! São detalhistas, cuidadosos e muito profissionais. Pintura perfeita, lisinha, macia ao toque, um brilho perfeito. Fiquei impressionada e muito feliz! Super recomendo! Meu carro tá lindo! E entregaram antes do prazo!”",
+              },
+              {
+                name: "Renato Veloso",
+                text:
+                  "“Entregaram meu carro em 24h, serviço de lanternagem e pintura muito bem executado e o valor cobrado muito justo. Ficou excelente! e ainda deram um geral. Farei outros serviços com certeza”",
+              },
+              {
+                name: "José Pereira",
+                text:
+                  "“Atendimento ótimo! Cumprrem o prazo! Mão de obra impecável! Ainda entregaram o carro lavado e aspirado, nota 10!”",
+              },
+              {
+                name: "Mayra Paula Cristina",
+                text:
+                  "“Foi uma ótima experiência. Pessoal sério, comprometido com prazos com acabamento muito atenciosos sempre informando o progresso do serviço. Curti muito mesmo.”",
+              },
+              {
+                name: "Vanessa Moreira",
+                text:
+                  "“Atendimento e serviços espetaculares. No meu caso, recebi meu carro com um dia de antecedência. Com certeza indico para todos os meus amigos. Impecável.”",
+              },
+              {
+                name: "Eduardo Junior",
+                text:
+                  "“Deram 10 dias, foi me entregue em 5 dias. Entregaram o carro lavado por dentro e por fora. Atendimento profissional e cordial.”",
+              },
+            ].map((a) => (
               <div
-                key={`${rv.name}-${idx}`}
-                className="bg-[#0b1627] rounded-2xl p-8 border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+                key={a.name}
+                className="rounded-2xl bg-[#0b1627] border border-white/10 p-7"
               >
-                <div className="flex gap-1 text-cyan-300 mb-5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <StarMiniIcon key={i} className="w-5 h-5" />
-                  ))}
+                <div className="flex items-center gap-2 mb-4 text-cyan-400">
+                  <StarIcon className="w-6 h-6" />
+                  <StarIcon className="w-6 h-6" />
+                  <StarIcon className="w-6 h-6" />
+                  <StarIcon className="w-6 h-6" />
+                  <StarIcon className="w-6 h-6" />
                 </div>
 
-                <p className="text-gray-200 leading-relaxed italic">"{rv.text}"</p>
+                <p className="text-gray-300 leading-relaxed italic text-sm">
+                  {a.text}
+                </p>
 
-                <div className="mt-6 text-cyan-300 font-semibold">
-                  – {rv.name}
-                </div>
+                <p className="mt-6 text-cyan-400 font-semibold text-sm">
+                  – {a.name}
+                </p>
               </div>
             ))}
           </div>
 
           <div className="mt-10 flex justify-center">
             <a
-              href="https://www.google.com/search?q=blink+est%C3%A9tica+automotiva+barra+da+tijuca+avalia%C3%A7%C3%B5es"
+              href="https://www.google.com/search?q=BLINK+Est%C3%A9tica+Automotiva+Barra+da+Tijuca"
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-cyan-500 text-black font-bold px-8 py-4 rounded-xl hover:bg-cyan-400 transition"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-cyan-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-cyan-600 transition"
             >
-              <StarMiniIcon className="w-5 h-5" />
+              <StarIcon className="w-5 h-5" />
               Ver avaliações no Google
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* CONTATO (igual ao print) */}
-      <section id="contato" className="py-20 bg-[#050b14]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold">Entre em Contato</h2>
-            <p className="text-gray-400 mt-3">
-              Atendimento rápido no WhatsApp. Fale com a gente!
-            </p>
-          </div>
-
-          <div className="mt-12 grid lg:grid-cols-2 gap-10">
-            {/* LEFT */}
-            <div className="bg-black/40 rounded-2xl border border-white/10 p-8 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-              <h3 className="text-2xl font-extrabold text-cyan-300 mb-6">
-                Nossa Unidade
-              </h3>
-
-              <div className="bg-[#0b1627] rounded-2xl border border-white/10 p-6">
-                <div className="text-cyan-300 font-bold text-lg">
-                  Unidade Barra da Tijuca
-                </div>
-                <div className="text-gray-300 mt-3">
-                  Rua Joathur Bueno, 272
-                </div>
-                <div className="text-gray-300">Barra da Tijuca - RJ</div>
-
-                <div className="mt-5 space-y-2 text-cyan-300 font-semibold">
-                  <div>(21) 96918-7827</div>
-                  <div>(21) 98222-7699</div>
-                </div>
-              </div>
-
-              <div className="mt-6 bg-[#0b1627] rounded-2xl border border-white/10 p-6">
-                <div className="text-cyan-300 font-bold text-lg">
-                  Horário de Funcionamento
-                </div>
-                <div className="text-gray-300 mt-3">
-                  <span className="font-semibold">Segunda a Sexta:</span> 08:00–18:00
-                </div>
-              </div>
-
-              <div className="mt-6 bg-[#0b1627] rounded-2xl border border-white/10 p-6">
-                <div className="text-cyan-300 font-bold text-lg">Telefone Fixo</div>
-                <div className="text-gray-300 mt-3">(21) 2439-4259</div>
-              </div>
-
-              <div className="mt-8 grid sm:grid-cols-2 gap-4">
-                <a
-                  href={whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-3 bg-cyan-500 text-black font-bold px-6 py-4 rounded-xl hover:bg-cyan-400 transition"
-                >
-                  <PhoneCallMiniIcon className="w-5 h-5" />
-                  WhatsApp
-                </a>
-
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-3 bg-white text-black font-bold px-6 py-4 rounded-xl hover:opacity-90 transition"
-                >
-                  <PinMiniIcon className="w-5 h-5" />
-                  Como Chegar
-                </a>
-              </div>
-            </div>
-
-            {/* RIGHT - FORM */}
-            <div className="bg-[#0b1627] rounded-2xl border border-white/10 p-8 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-              <h3 className="text-2xl font-extrabold mb-6">Solicitar Orçamento</h3>
-
-              <form onSubmit={handleSubmitWhatsApp} className="space-y-5">
-                <div>
-                  <label className="block text-gray-200 text-sm font-semibold mb-2">
-                    Nome Completo
-                  </label>
-                  <input
-                    value={form.nome}
-                    onChange={(e) => setForm({ ...form, nome: e.target.value })}
-                    className="w-full rounded-xl bg-[#0a1222] border border-white/10 px-4 py-3 text-gray-100 outline-none focus:border-cyan-400/60"
-                    placeholder="Seu nome completo"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-200 text-sm font-semibold mb-2">
-                    Telefone / WhatsApp
-                  </label>
-                  <input
-                    value={form.telefone}
-                    onChange={(e) =>
-                      setForm({ ...form, telefone: e.target.value })
-                    }
-                    className="w-full rounded-xl bg-[#0a1222] border border-white/10 px-4 py-3 text-gray-100 outline-none focus:border-cyan-400/60"
-                    placeholder="(00) 00000-0000"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-200 text-sm font-semibold mb-2">
-                    Tipo de Atendimento
-                  </label>
-                  <select
-                    value={form.tipo}
-                    onChange={(e) => setForm({ ...form, tipo: e.target.value })}
-                    className="w-full rounded-xl bg-[#0a1222] border border-white/10 px-4 py-3 text-gray-100 outline-none focus:border-cyan-400/60"
-                  >
-                    <option value="">Selecione...</option>
-                    <option value="Particular">Particular</option>
-                    <option value="Seguradora">Seguradora</option>
-                    <option value="Frota/Empresa">Frota/Empresa</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-gray-200 text-sm font-semibold mb-2">
-                    Serviço de Interesse
-                  </label>
-                  <select
-                    value={form.servico}
-                    onChange={(e) =>
-                      setForm({ ...form, servico: e.target.value })
-                    }
-                    className="w-full rounded-xl bg-[#0a1222] border border-white/10 px-4 py-3 text-gray-100 outline-none focus:border-cyan-400/60"
-                  >
-                    <option value="">Selecione o serviço...</option>
-                    {services.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-gray-200 text-sm font-semibold mb-2">
-                    Descrição do Serviço
-                  </label>
-                  <textarea
-                    value={form.desc}
-                    onChange={(e) => setForm({ ...form, desc: e.target.value })}
-                    className="w-full min-h-[120px] rounded-xl bg-[#0a1222] border border-white/10 px-4 py-3 text-gray-100 outline-none focus:border-cyan-400/60 resize-none"
-                    placeholder="Descreva o serviço necessário (ex: polimento no capô, pintura na porta direita...)"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-3 bg-cyan-500 text-black font-extrabold px-6 py-4 rounded-xl hover:bg-cyan-400 transition"
-                >
-                  Enviar pelo WhatsApp
-                  <ArrowRightMiniIcon className="w-5 h-5" />
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
@@ -699,139 +515,292 @@ export default function Home() {
                 key={i}
                 src={`/galeria/${i}.jpg`}
                 alt="Trabalho realizado"
-                className="rounded-2xl object-cover h-60 w-full border border-white/10"
+                className="rounded-2xl object-cover h-56 md:h-64 w-full border border-white/10"
               />
             ))}
           </div>
         </div>
       </section>
 
-            {/* CTA FINAL (igual ao print) */}
-      <section className="bg-gradient-to-r from-cyan-600 to-sky-500 py-20 md:py-28 text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <span className="inline-flex items-center gap-2 mb-8 px-6 py-3 text-sm font-semibold rounded-full bg-black/15 text-white backdrop-blur">
-            ✦ Onde estética vira padrão
+      {/* CONTATO (print) */}
+      <section id="contato" className="py-20 bg-[#0a1220]">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center">
+            Entre em Contato
+          </h2>
+          <p className="text-center text-gray-400 mt-3">
+            Atendimento rápido no WhatsApp. Fale com a gente!
+          </p>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-8">
+            {/* Left card */}
+            <div className="rounded-2xl bg-black/40 border border-white/10 p-8">
+              <h3 className="text-2xl font-extrabold text-cyan-400">
+                Nossa Unidade
+              </h3>
+
+              <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
+                <p className="text-cyan-300 font-bold">Unidade Barra da Tijuca</p>
+                <p className="text-gray-300 mt-2">Rua Joathur Bueno, 272</p>
+                <p className="text-gray-300">Barra da Tijuca - RJ</p>
+
+                <div className="mt-4 space-y-2 text-cyan-300 font-semibold">
+                  <p>(21) 96918-7827</p>
+                  <p>(21) 98222-7699</p>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
+                <p className="text-cyan-300 font-bold">Horário de Funcionamento</p>
+                <p className="text-gray-200 mt-2 font-semibold">
+                  Segunda a Sexta: 08:00–18:00
+                </p>
+              </div>
+
+              <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
+                <p className="text-cyan-300 font-bold">Telefone Fixo</p>
+                <p className="text-gray-200 mt-2 font-semibold">(21) 2439-4259</p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 text-black font-bold py-3 hover:bg-cyan-600 transition"
+                >
+                  <PhoneIcon className="w-5 h-5" />
+                  WhatsApp
+                </a>
+
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-cyan-600 font-bold py-3 hover:opacity-90 transition"
+                >
+                  <PinIcon className="w-5 h-5" />
+                  Como Chegar
+                </a>
+              </div>
+            </div>
+
+            {/* Right card */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <h3 className="text-2xl font-extrabold">Solicitar Orçamento</h3>
+
+              <div className="mt-6 space-y-5">
+                <div>
+                  <label className="text-sm font-semibold text-gray-200">
+                    Nome Completo
+                  </label>
+                  <input
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                    placeholder="Seu nome completo"
+                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold text-gray-200">
+                    Telefone / WhatsApp
+                  </label>
+                  <input
+                    value={telefone}
+                    onChange={(e) => setTelefone(e.target.value)}
+                    placeholder="(00) 00000-0000"
+                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold text-gray-200">
+                    Tipo de Atendimento
+                  </label>
+                  <select
+                    value={tipo}
+                    onChange={(e) => setTipo(e.target.value)}
+                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-200 outline-none focus:border-cyan-400/60"
+                  >
+                    <option value="">Selecione...</option>
+                    <option value="Orçamento">Orçamento</option>
+                    <option value="Agendamento">Agendamento</option>
+                    <option value="Sinistro / Seguradora">Sinistro / Seguradora</option>
+                    <option value="Dúvidas">Dúvidas</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold text-gray-200">
+                    Serviço de Interesse
+                  </label>
+                  <select
+                    value={servico}
+                    onChange={(e) => setServico(e.target.value)}
+                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-200 outline-none focus:border-cyan-400/60"
+                  >
+                    <option value="">Selecione o serviço...</option>
+                    <option value="Pintura Automotiva">Pintura Automotiva</option>
+                    <option value="Polimento Técnico">Polimento Técnico</option>
+                    <option value="Lanternagem">Lanternagem</option>
+                    <option value="Detalhamento">Detalhamento</option>
+                    <option value="Acabamento">Acabamento</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold text-gray-200">
+                    Descrição do Serviço
+                  </label>
+                  <textarea
+                    value={descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
+                    placeholder="Descreva o serviço necessário (ex: polimento no capô, pintura na porta direita...)"
+                    rows={5}
+                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60 resize-none"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={enviarWhatsApp}
+                  className="w-full rounded-xl bg-cyan-500 text-black font-extrabold py-3 hover:bg-cyan-600 transition inline-flex items-center justify-center gap-2"
+                >
+                  Enviar pelo WhatsApp <ArrowRightIcon className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL (print do final do site) */}
+      <section className="py-20 bg-gradient-to-r from-cyan-600 to-sky-500 text-center">
+        <div className="max-w-5xl mx-auto px-6">
+          <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold rounded-full bg-black/20 text-white border border-white/20 backdrop-blur">
+            <SparkIcon className="w-4 h-4" />
+            Onde estética vira padrão
           </span>
 
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
             Agende seu serviço hoje mesmo
           </h2>
 
-          <p className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="mt-4 text-white/90 text-base md:text-lg">
             Entre em contato pelo WhatsApp e descubra a qualidade que transformou
             a estética automotiva na Barra da Tijuca!
           </p>
 
-          <div className="flex items-center justify-center gap-4 flex-wrap">
+          <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
             <a
-              href={whatsapp}
+              href={whatsappLink}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-black text-cyan-300 px-7 py-4 rounded-lg font-semibold hover:opacity-90 transition"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-black text-cyan-300 font-extrabold px-7 py-3 rounded-lg hover:opacity-90 transition"
             >
               <PhoneIcon className="w-5 h-5" />
               Falar no WhatsApp
             </a>
 
-            {/* botao branco "vazio" igual o print */}
-            <div className="h-14 w-40 rounded-lg bg-white shadow-sm" />
+            <button
+              type="button"
+              onClick={() => scrollToId("contato")}
+              className="inline-flex items-center justify-center bg-white text-black font-extrabold px-7 py-3 rounded-lg hover:opacity-90 transition"
+            >
+              Solicitar Orçamento
+            </button>
           </div>
         </div>
       </section>
 
-      {/* FOOTER (igual ao print) */}
-      <footer className="bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 py-14">
+      {/* FOOTER (igual print) */}
+      <footer className="bg-black py-14">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-10 items-start">
-            {/* Coluna 1 */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <img
-                  src="/logo.png"
-                  alt="BLINK"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <div className="text-lg font-bold">
-                  BLINK <span className="text-cyan-400">ESTÉTICA AUTOMOTIVA</span>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl overflow-hidden bg-white/10 border border-white/10">
+                  <img
+                    src="/logo.png"
+                    alt="BLINK Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div>
+                  <p className="font-extrabold text-cyan-400">
+                    BLINK ESTÉTICA AUTOMOTIVA
+                  </p>
+                  <p className="text-gray-400 mt-2 text-sm leading-relaxed max-w-sm">
+                    Onde estética vira padrão. Especialistas em Lanternagem,
+                    pintura e polimento técnico na Barra da Tijuca.
+                  </p>
+                  <p className="text-gray-500 mt-4 text-xs">
+                    CNPJ: 33.795.707/0001-90
+                  </p>
                 </div>
               </div>
-
-              <p className="text-gray-400 leading-relaxed max-w-sm">
-                Onde estética vira padrão. Especialistas em Lanternagem, pintura e
-                polimento técnico na Barra da Tijuca.
-              </p>
-
-              <p className="text-gray-500 text-sm mt-6">
-                CNPJ: 33.795.707/0001-90
-              </p>
             </div>
 
-            {/* Coluna 2 */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Serviços</h3>
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-center gap-3">
-                  <CheckIcon className="w-5 h-5 text-cyan-400" />
-                  Pintura Automotiva
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckIcon className="w-5 h-5 text-cyan-400" />
-                  Polimento Técnico
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckIcon className="w-5 h-5 text-cyan-400" />
-                  Lanternagem
-                </li>
+              <p className="font-extrabold text-white">Serviços</p>
+              <ul className="mt-4 space-y-2 text-gray-300 text-sm">
+                {[
+                  "Pintura Automotiva",
+                  "Polimento Técnico",
+                  "Lanternagem",
+                  "Detalhamento",
+                ].map((s) => (
+                  <li key={s} className="flex items-center gap-2">
+                    <CheckIcon className="w-4 h-4 text-cyan-400" />
+                    {s}
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Coluna 3 */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Contato</h3>
-
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-center gap-3">
-                  <PhoneIcon className="w-5 h-5 text-cyan-400" />
+              <p className="font-extrabold text-white">Contato</p>
+              <ul className="mt-4 space-y-3 text-gray-300 text-sm">
+                <li className="flex items-center gap-2">
+                  <PhoneIcon className="w-4 h-4 text-cyan-400" />
                   (21) 96918-7827
                 </li>
-                <li className="flex items-center gap-3">
-                  <PhoneIcon className="w-5 h-5 text-cyan-400" />
+                <li className="flex items-center gap-2">
+                  <PhoneIcon className="w-4 h-4 text-cyan-400" />
                   (21) 98222-7699
                 </li>
-                <li className="flex items-center gap-3">
-                  <PhoneIcon className="w-5 h-5 text-cyan-400" />
+                <li className="flex items-center gap-2">
+                  <PhoneIcon className="w-4 h-4 text-cyan-400" />
                   (21) 2439-4259
                 </li>
-                <li className="flex items-center gap-3">
-                  <PinIcon className="w-5 h-5 text-cyan-400" />
+                <li className="flex items-center gap-2">
+                  <PinIcon className="w-4 h-4 text-cyan-400" />
                   Barra da Tijuca - RJ
                 </li>
               </ul>
 
-              <a
-                href="https://instagram.com/blinkesteticaauto"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block mt-6 text-cyan-400 font-semibold hover:opacity-90"
-              >
+              <p className="mt-6 text-cyan-400 font-semibold text-sm">
                 @blinkesteticaauto
-              </a>
+              </p>
             </div>
           </div>
 
-          <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} BLINK Estética Automotiva LTDA. Todos os
-            direitos reservados.
+          <div className="mt-12 border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
+            © 2024 BLINK Estética Automotiva LTDA. Todos os direitos reservados.
           </div>
         </div>
       </footer>
+    </main>
+  );
+}
 
+/* =======================
+   ICONES (sem biblioteca)
+======================= */
 
-/* =========================
-   ÍCONES (sem biblioteca)
-========================= */
-
-function PhoneMiniIcon({ className }) {
+function PhoneIcon({ className }) {
   return (
     <svg
       className={className}
@@ -843,31 +812,12 @@ function PhoneMiniIcon({ className }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L9.91 10.09a16 16 0 0 0 6 6l.76-.76a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z" />
+      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
     </svg>
   );
 }
 
-function PhoneCallMiniIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L9.91 10.09a16 16 0 0 0 6 6l.76-.76a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z" />
-      <path d="M14 2a6 6 0 0 1 6 6" />
-      <path d="M14 6a2 2 0 0 1 2 2" />
-    </svg>
-  );
-}
-
-function PinMiniIcon({ className }) {
+function PinIcon({ className }) {
   return (
     <svg
       className={className}
@@ -885,7 +835,7 @@ function PinMiniIcon({ className }) {
   );
 }
 
-function ClockMiniIcon({ className }) {
+function ClockIcon({ className }) {
   return (
     <svg
       className={className}
@@ -903,7 +853,7 @@ function ClockMiniIcon({ className }) {
   );
 }
 
-function MenuMiniIcon({ className }) {
+function MenuIcon({ className }) {
   return (
     <svg
       className={className}
@@ -922,25 +872,7 @@ function MenuMiniIcon({ className }) {
   );
 }
 
-function ArrowRightMiniIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M5 12h14" />
-      <path d="M13 5l7 7-7 7" />
-    </svg>
-  );
-}
-
-function StarMiniIcon({ className }) {
+function StarIcon({ className }) {
   return (
     <svg
       className={className}
@@ -948,7 +880,7 @@ function StarMiniIcon({ className }) {
       fill="currentColor"
       aria-hidden="true"
     >
-      <path d="M12 17.27l5.18 3.04-1.64-5.81L20 9.24l-5.9-.51L12 3.5 9.9 8.73 4 9.24l4.46 5.26-1.64 5.81L12 17.27z" />
+      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
     </svg>
   );
 }
@@ -970,8 +902,7 @@ function CheckIcon({ className }) {
   );
 }
 
-
-function SparkMiniIcon({ className }) {
+function SparkIcon({ className }) {
   return (
     <svg
       className={className}
@@ -983,52 +914,117 @@ function SparkMiniIcon({ className }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5L12 2z" />
-      <path d="M4 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z" />
+      <path d="M12 2l1.5 6L20 10l-6.5 2L12 18l-1.5-6L4 10l6.5-2L12 2z" />
     </svg>
   );
 }
 
-/* ÍCONES DA SEÇÃO “POR QUE NÓS?” */
-function SparkIcon({ className }) {
-  return <SparkMiniIcon className={className} />;
-}
-function BoltIcon({ className }) {
+function ArrowRightIcon({ className }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M13 2L3 14h7l-1 8 12-14h-7l-1-6z" />
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="m13 5 7 7-7 7" />
     </svg>
   );
 }
-function LikeIcon({ className }) {
+
+/* ===== Icones dos cards "Por que nós" ===== */
+function SparkBoxIcon() {
+  return <SparkIcon className="w-7 h-7" />;
+}
+function BoltBoxIcon() {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M7 10v12H3V10h4z" />
-      <path d="M21 10a2 2 0 0 0-2-2h-6l1-4a2 2 0 0 0-2-2L7 10v12h10a2 2 0 0 0 2-2l2-8z" />
+    <svg
+      className="w-7 h-7"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
     </svg>
   );
 }
-function UsersIcon({ className }) {
+function ThumbBoxIcon() {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <svg
+      className="w-7 h-7"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M14 9V5a3 3 0 0 0-3-3l-1 7" />
+      <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+      <path d="M7 11h8a2 2 0 0 1 2 2l-1 7a2 2 0 0 1-2 2H7V11z" />
+    </svg>
+  );
+}
+function UsersBoxIcon() {
+  return (
+    <svg
+      className="w-7 h-7"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M17 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M7 21v-2a4 4 0 0 1 4-4h2" />
       <circle cx="9" cy="7" r="4" />
-      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   );
 }
-function ShieldIcon({ className }) {
+function ShieldBoxIcon() {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      className="w-7 h-7"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   );
 }
-function BadgeIcon({ className }) {
+function MedalBoxIcon() {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 17l-5 3 1-5-4-4 5-.7L12 6l2 4.3 5 .7-4 4 1 5-5-3z" />
+    <svg
+      className="w-7 h-7"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="8" r="6" />
+      <path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5" />
     </svg>
   );
 }
