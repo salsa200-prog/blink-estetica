@@ -22,8 +22,7 @@ export default function Home() {
           </h1>
 
           <p className="text-gray-300 mb-8">
-            Especialistas em pintura, polimento técnico, cristalização
-            e lanternagem estrutural.
+            Especialistas em pintura, polimento técnico, lanternagem estrutural.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
@@ -53,7 +52,6 @@ export default function Home() {
           {[
             "Pintura Automotiva",
             "Polimento Técnico",
-            "Cristalização Automotiva",
             "Lanternagem Estrutural",
             "Acabamento e Detalhamento",
           ].map((item) => (
