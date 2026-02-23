@@ -515,23 +515,33 @@ export default function Home() {
 
       {/* GALERIA */}
       <section id="galeria" className="py-20 bg-black">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">
-            Nossa Galeria de Trabalhos
-          </h2>
+  <h2 className="text-3xl font-bold text-center mb-12">
+    Nossa Galeria de Trabalhos
+  </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <img
-                key={i}
-                src={`/galeria/${i}.jpg`}
-                alt="Trabalho realizado"
-                className="rounded-2xl object-cover h-56 md:h-64 w-full border border-white/10"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+  <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
+    {[
+      "/galeria/1.jpg",
+      "/galeria/2.jpg",
+      "/galeria/3.jpg",
+      "/galeria/4.jpg",
+      "/galeria/5.jpg",
+      "/galeria/6.jpg",
+    ].map((src, i) => (
+      <div
+        key={src}
+        className="rounded-2xl overflow-hidden border border-white/10 bg-[#0b1627]/40"
+      >
+        <img
+          src={src}
+          alt={`Trabalho realizado ${i + 1}`}
+          className="w-full h-64 object-cover"
+          loading="lazy"
+        />
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* CONTATO (print) */}
       <section id="contato" className="py-20 bg-[#0a1220]">
