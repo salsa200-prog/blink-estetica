@@ -273,30 +273,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEGURADORAS (print) */}
-      <section className="py-14 bg-[#050b14]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-center">
-            Trabalhamos com as melhores seguradoras do mercado
-          </h2>
-          <p className="text-center text-gray-400 mt-2">
-            Atendemos todos os sinistros com agilidade e profissionalismo
-          </p>
+     {/* SEGURADORAS (com ícones) */}
+<section className="py-14 bg-[#050b14]">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-2xl md:text-3xl font-extrabold text-center">
+      Trabalhamos com as melhores seguradoras do mercado
+    </h2>
+    <p className="text-center text-gray-400 mt-2">
+      Atendemos todos os sinistros com agilidade e profissionalismo
+    </p>
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Porto Seguro", "Azul Seguros", "Itaú Seguros", "e demais seguradoras"].map(
-              (s) => (
-                <div
-                  key={s}
-                  className="rounded-xl bg-white/5 border border-white/10 text-center py-4 font-semibold text-gray-100"
-                >
-                  {s}
-                </div>
-              )
-            )}
+    <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+      {[
+        { name: "Porto Seguro", img: "/seguradoras/porto.png" },
+        { name: "Azul Seguros", img: "/seguradoras/azul.png" },
+        { name: "Itaú Seguros", img: "/seguradoras/itau.png" },
+        { name: "e demais seguradoras", img: "/seguradoras/geral.png" },
+      ].map((s) => (
+        <div
+          key={s.name}
+          className="rounded-xl bg-white/5 border border-white/10 py-4 px-4 font-semibold text-gray-100
+                     flex items-center justify-center gap-3"
+        >
+          <div className="w-9 h-9 rounded-lg bg-black/25 border border-white/10 flex items-center justify-center overflow-hidden">
+            <img
+              src={s.img}
+              alt={s.name}
+              className="w-full h-full object-contain p-1"
+            />
           </div>
+
+          <span className="text-sm md:text-base">{s.name}</span>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* SOBRE (print) */}
       <section className="py-16 bg-[#0a1220]">
