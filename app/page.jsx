@@ -800,7 +800,7 @@ export default function Home() {
           </div>
 
           <div className="mt-12 border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
-            © 2024 BLINK Estética Automotiva LTDA. Todos os direitos reservados.
+            © 2026 BLINK Estética Automotiva LTDA. Todos os direitos reservados.
           </div>
         </div>
       </footer>
