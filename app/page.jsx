@@ -273,37 +273,36 @@ export default function Home() {
         </div>
       </section>
 
-     {/* SEGURADORAS (com ícones) */}
-<section className="py-14 bg-[#050b14]">
-  <div className="max-w-6xl mx-auto px-6">
-    <h2 className="text-2xl md:text-3xl font-extrabold text-center">
+     {/* SEGURADORAS */}
+<section className="py-20 bg-[#050b14]">
+  <div className="max-w-7xl mx-auto px-6 text-center">
+    <h2 className="text-3xl font-bold mb-2">
       Trabalhamos com as melhores seguradoras do mercado
     </h2>
-    <p className="text-center text-gray-400 mt-2">
+    <p className="text-gray-400 mb-10">
       Atendemos todos os sinistros com agilidade e profissionalismo
     </p>
 
-    <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
       {[
-        { name: "Porto Seguro", img: "/seguradoras/porto.png" },
-        { name: "Azul Seguros", img: "/seguradoras/azul.png" },
-        { name: "Itaú Seguros", img: "/seguradoras/itau.png" },
-        { name: "e demais seguradoras", img: "/seguradoras/geral.png" },
+        { nome: "Porto Seguro", img: "/porto.png" },
+        { nome: "Azul Seguros", img: "/azul.png" },
+        { nome: "Itaú Seguros", img: "/itau.png" },
+        { nome: "e demais seguradoras", img: "/demais.png" },
       ].map((s) => (
         <div
-          key={s.name}
-          className="rounded-xl bg-white/5 border border-white/10 py-4 px-4 font-semibold text-gray-100
-                     flex items-center justify-center gap-3"
+          key={s.nome}
+          className="bg-[#0b1627]/70 border border-white/10 rounded-2xl px-6 py-5 flex items-center justify-center gap-4 backdrop-blur"
         >
-          <div className="w-9 h-9 rounded-lg bg-black/25 border border-white/10 flex items-center justify-center overflow-hidden">
+          <div className="w-12 h-12 rounded-xl bg-black/30 border border-white/10 flex items-center justify-center overflow-hidden">
             <img
               src={s.img}
-              alt={s.name}
-              className="w-full h-full object-contain p-1"
+              alt={s.nome}
+              className="w-full h-full object-cover"
             />
           </div>
 
-          <span className="text-sm md:text-base">{s.name}</span>
+          <span className="font-semibold text-white">{s.nome}</span>
         </div>
       ))}
     </div>
