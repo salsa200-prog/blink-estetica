@@ -1,10 +1,13 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "BLINK Estética Automotiva | Barra da Tijuca",
-  description:
-    "Oficina estética automotiva especializada em pintura, polimento e cristalização na Barra da Tijuca.",
+  title: "BLINK Estética Automotiva",
+  description: "Oficina estética automotiva na Barra da Tijuca",
+  icons: {
+    icon: "/icon.png",
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
