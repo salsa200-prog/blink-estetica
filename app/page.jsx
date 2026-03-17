@@ -272,7 +272,30 @@ export default function Home() {
           </div>
         </div>
       </section>
+<section className="py-10 bg-gradient-to-r from-cyan-500 to-blue-600 text-center">
+  <div className="max-w-5xl mx-auto px-6">
+    <h2 className="text-2xl md:text-3xl font-extrabold text-white">
+      🔥 PROMOÇÃO DE MARÇO
+    </h2>
 
+    <p className="mt-4 text-white text-lg">
+      Clientes que trouxerem veículos de <strong>seguradora</strong> ganham
+      <strong> POLIMENTO TÉCNICO GRATUITO</strong>!
+    </p>
+
+    <p className="mt-2 text-white/90 text-sm">
+      Oferta válida por tempo limitado. Aproveite agora!
+    </p>
+
+    <a
+      href="https://wa.me/5521969187827"
+      target="_blank"
+      className="inline-block mt-6 bg-black text-cyan-400 font-bold px-6 py-3 rounded-xl"
+    >
+      Falar no WhatsApp
+    </a>
+  </div>
+</section>
      {/* SEGURADORAS */}
 <section className="py-20 bg-[#050b14]">
   <div className="max-w-7xl mx-auto px-6 text-center">
