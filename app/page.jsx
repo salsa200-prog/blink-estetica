@@ -287,13 +287,29 @@ export default function Home() {
       Oferta válida por tempo limitado. Aproveite agora!
     </p>
 
-    <a
-      href="https://wa.me/5521969187827"
-      target="_blank"
-      className="inline-block mt-6 bg-black text-cyan-400 font-bold px-6 py-3 rounded-xl"
-    >
-      Falar no WhatsApp
-    </a>
+    <div className="flex flex-col md:flex-row gap-4 justify-center mt-6">
+  
+  {/* BOTÃO WHATSAPP */}
+  <a
+    href="https://wa.me/5521969187827"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-black text-cyan-400 font-bold px-6 py-3 rounded-xl text-center"
+  >
+    Falar no WhatsApp
+  </a>
+
+  {/* BOTÃO INSTAGRAM */}
+  <a
+    href="https://instagram.com/blinkesteticaauto"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white text-black font-bold px-6 py-3 rounded-xl text-center hover:opacity-90"
+  >
+    Siga no Instagram + 10% OFF
+  </a>
+
+</div>
   </div>
 </section>
      {/* SEGURADORAS */}
