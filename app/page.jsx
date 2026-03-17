@@ -803,7 +803,14 @@ export default function Home() {
               </ul>
 
               <p className="mt-6 text-cyan-400 font-semibold text-sm">
-                @blinkesteticaauto
+<a
+  href="https://instagram.com/blinkesteticaauto"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-cyan-400 font-semibold hover:text-cyan-300 transition"
+>
+  @blinkesteticaauto
+</a>
               </p>
             </div>
           </div>
