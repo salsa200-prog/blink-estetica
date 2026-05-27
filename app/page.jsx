@@ -271,10 +271,6 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
-<section className="py-10 bg-gradient-to-r from-cyan-500 to-blue-600 text-center">
-  <div className="max-w-5xl mx-auto px-6">
-    <h2 className="text-2xl md:text-3xl font-extrabold text-white">
       <section className="relative overflow-hidden py-20 px-6 bg-gradient-to-r from-green-700 via-yellow-500 to-blue-700 text-white">
 
   {/* Bandeiras decorativas */}
