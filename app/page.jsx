@@ -363,7 +363,6 @@ export default function Home() {
   </a>
 
 </div>
-  </div>
 </section>
      {/* SEGURADORAS */}
 <section className="py-20 bg-[#050b14]">
