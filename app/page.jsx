@@ -17,7 +17,7 @@ export default function Home() {
     () => `https://wa.me/${whatsappNumber}`,
     [whatsappNumber]
   );
-
+  
   const scrollToId = (id) => {
     setOpen(false);
     const el = document.getElementById(id);
