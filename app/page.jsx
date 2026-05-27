@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Home() {
   const [showPromo, setShowPromo] = useState(true);
   const [open, setOpen] = useState(false);
-
+  
   // Form (Contato)
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
