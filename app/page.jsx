@@ -270,7 +270,6 @@ export default function Home() {
               Ver Serviços
             </button>
           </div>
-        </div>
       <section className="relative overflow-hidden py-20 px-6 bg-gradient-to-r from-green-700 via-yellow-500 to-blue-700 text-white">
 
   {/* Bandeiras decorativas */}
