@@ -275,19 +275,76 @@ export default function Home() {
 <section className="py-10 bg-gradient-to-r from-cyan-500 to-blue-600 text-center">
   <div className="max-w-5xl mx-auto px-6">
     <h2 className="text-2xl md:text-3xl font-extrabold text-white">
-      🔥 PROMOÇÃO DE MARÇO
+      <section className="relative overflow-hidden py-20 px-6 bg-gradient-to-r from-green-700 via-yellow-500 to-blue-700 text-white">
+
+  {/* Bandeiras decorativas */}
+  <div className="absolute top-6 left-6 text-5xl opacity-20">🇧🇷</div>
+  <div className="absolute top-10 right-10 text-6xl opacity-20">⚽</div>
+  <div className="absolute bottom-6 left-1/4 text-4xl opacity-20">🇧🇷</div>
+  <div className="absolute bottom-10 right-1/4 text-5xl opacity-20">🏆</div>
+
+  <div className="relative z-10 max-w-5xl mx-auto text-center">
+
+    <div className="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-5 py-2 rounded-full mb-6">
+      <span className="text-2xl">🇧🇷</span>
+      <span className="font-semibold tracking-wide">
+        PROMOÇÃO ESPECIAL DE JUNHO
+      </span>
+    </div>
+
+    <h2 className="text-4xl md:text-6xl font-black leading-tight mb-6">
+      CLIMA DE COPA NA <br />
+      BLINK ESTÉTICA AUTOMOTIVA
     </h2>
 
-    <p className="mt-4 text-white text-lg">
-      Clientes que trouxerem veículos de <strong>seguradora</strong> ganham
-      <strong> POLIMENTO TÉCNICO GRATUITO</strong>!
+    <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
+      Clientes que trouxerem veículos de{" "}
+      <strong className="text-white">
+        seguradora
+      </strong>{" "}
+      ganham{" "}
+      <strong className="text-black bg-yellow-300 px-2 py-1 rounded">
+        POLIMENTO TÉCNICO GRATUITO
+      </strong>
     </p>
 
-    <p className="mt-2 text-white/90 text-sm">
-      Oferta válida por tempo limitado. Aproveite agora!
+    <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10">
+      E clientes que fecharem serviço particular através do site ganham{" "}
+      <strong className="bg-white text-green-700 px-2 py-1 rounded">
+        10% DE DESCONTO
+      </strong>
     </p>
 
-    <div className="flex flex-col md:flex-row gap-4 justify-center mt-6">
+    <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+
+      {/* WhatsApp */}
+      <a
+        href="https://wa.me/5521969187827"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-black hover:bg-zinc-900 transition-all duration-300 text-cyan-400 font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl"
+      >
+        ⚽ Falar no WhatsApp
+      </a>
+
+      {/* Instagram */}
+      <a
+        href="https://instagram.com/blinkesteticaauto"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-white text-green-700 hover:bg-zinc-100 transition-all duration-300 font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl"
+      >
+        🇧🇷 Seguir no Instagram
+      </a>
+
+    </div>
+
+    <p className="mt-8 text-white/80 text-sm md:text-base">
+      Promoção válida durante o mês de junho • Aproveite o clima da Copa 🏆
+    </p>
+
+  </div>
+</section>
   
   {/* BOTÃO WHATSAPP */}
   <a
