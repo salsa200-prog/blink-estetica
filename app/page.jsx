@@ -119,7 +119,7 @@ export default function Home() {
               <h2 className="mb-6 text-4xl font-black leading-tight text-white md:text-5xl">
                 PROMOÇÃO
                 <br />
-                COPA DO MUNDO 🇧🇷
+                COPA DO MUNDO
               </h2>
 
               <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
