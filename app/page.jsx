@@ -1,10 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [showPromo, setShowPromo] = useState(true);
-  const [open, setOpen] = useState(false);
+  const [showPromo, setShowPromo] = useState(false);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowPromo(true);
+  }, 1200);
+
+  return () => clearTimeout(timer);
+}, []);
   
   // Form (Contato)
   const [nome, setNome] = useState("");
@@ -42,7 +49,69 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-black text-white">
+    <main> className="bg-black text-white">
+      {showPromo && (
+  <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+    <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-yellow-400/30 bg-gradient-to-br from-green-700 via-green-600 to-blue-700 p-8 shadow-2xl">
+
+      {/* Botão fechar */}
+      <button
+        onClick={() => setShowPromo(false)}
+        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-2xl font-bold text-white transition hover:bg-black/50"
+      >
+        ×
+      </button>
+
+      {/* Bandeiras */}
+      <div className="absolute left-4 top-4 text-4xl">🇧🇷</div>
+      <div className="absolute bottom-4 right-4 text-4xl">⚽</div>
+
+      <div className="text-center">
+        <span className="mb-4 inline-block rounded-full bg-yellow-400 px-5 py-2 text-sm font-bold uppercase tracking-widest text-black shadow-lg">
+          Promoção Especial de Junho
+        </span>
+
+        <h2 className="mb-6 text-4xl font-black leading-tight text-white md:text-5xl">
+          PROMOÇÃO
+          <br />
+          COPA DO MUNDO 🇧🇷
+        </h2>
+
+        <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
+          Veículos que vierem por <strong>seguradora</strong> ganham
+          <span className="font-black text-yellow-300">
+            {" "}POLIMENTO TÉCNICO GRATUITO
+          </span>
+        </p>
+
+        <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/90">
+          Clientes que vierem pelo site ganham
+          <span className="font-black text-yellow-300">
+            {" "}10% OFF NO PARTICULAR
+          </span>
+        </p>
+
+        <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
+          <a
+            href="https://wa.me/5521969187827"
+            target="_blank"
+            className="rounded-2xl bg-black px-8 py-4 text-lg font-bold text-cyan-400 transition hover:scale-105 hover:bg-neutral-900"
+          >
+            Falar no WhatsApp
+          </a>
+
+          <a
+            href="https://instagram.com/blinkesteticaauto"
+            target="_blank"
+            className="rounded-2xl border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur transition hover:scale-105 hover:bg-white/20"
+          >
+            Instagram + 10% OFF
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
       {/* TOP BAR */}
       <div className="bg-gradient-to-r from-cyan-600 to-sky-500 text-white py-2">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -271,67 +340,6 @@ export default function Home() {
               Ver Serviços
             </button>
           </div>
-     {showPromo && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-    <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-yellow-400 bg-gradient-to-r from-green-600 via-yellow-400 to-blue-600 p-1 shadow-2xl animate-pulse">
-
-      <div className="relative rounded-3xl bg-black/90 px-8 py-10 text-center">
-
-        <button
-          onClick={() => setShowPromo(false)}
-          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-black text-xl font-bold hover:scale-110 transition"
-        >
-          ×
-        </button>
-
-        <div className="mb-4 text-5xl">
-          🇧🇷⚽🏆
-        </div>
-
-        <h2 className="text-4xl font-black text-white mb-4">
-          PROMOÇÃO DA COPA
-        </h2>
-
-        <p className="text-xl text-white/90 leading-relaxed mb-6">
-          Veículos de seguradora ganham
-          <span className="text-yellow-400 font-bold">
-            {" "}POLIMENTO TÉCNICO GRÁTIS
-          </span>
-        </p>
-
-        <p className="text-lg text-cyan-300 font-semibold mb-8">
-          Clientes vindos pelo site recebem
-          <span className="text-yellow-300">
-            {" "}10% OFF no particular
-          </span>
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-          <a
-            href="https://wa.me/5521969187827"
-            target="_blank"
-            className="rounded-xl bg-green-500 px-8 py-4 text-lg font-bold text-white transition hover:scale-105 hover:bg-green-400"
-          >
-            Falar no WhatsApp
-          </a>
-
-          <a
-            href="https://instagram.com/blinkesteticaauto"
-            target="_blank"
-            className="rounded-xl bg-pink-600 px-8 py-4 text-lg font-bold text-white transition hover:scale-105 hover:bg-pink-500"
-          >
-            Instagram + 10% OFF
-          </a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-)}
-          git add .
-git commit -m "popup copa"
-git push
      {/* SEGURADORAS */}
 <section className="py-20 bg-[#050b14]">
   <div className="max-w-7xl mx-auto px-6 text-center">
