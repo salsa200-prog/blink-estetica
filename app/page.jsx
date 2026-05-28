@@ -1,6 +1,3 @@
-# app/page.jsx
-
-```jsx
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
