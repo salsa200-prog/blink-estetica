@@ -671,11 +671,13 @@ export default function Home() {
                 <li className="flex items-center gap-2">
                   <PhoneIcon className="h-4 w-4 text-cyan-400" />
                   (21) 96918-7827
+                  (21) 98222-7699
+                  (21) 2439-4259
                 </li>
 
                 <li className="flex items-center gap-2">
                   <PinIcon className="h-4 w-4 text-cyan-400" />
-                  Barra da Tijuca - RJ
+                 Rua joarthur bueno,272 Barra da Tijuca - RJ
                 </li>
               </ul>
 
