@@ -1,11 +1,16 @@
-
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Home() {
   const [showPromo, setShowPromo] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [servico, setServico] = useState("");
+  const [descricao, setDescricao] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,19 +20,11 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // FORM
-  const [nome, setNome] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [servico, setServico] = useState("");
-  const [descricao, setDescricao] = useState("");
-
   const whatsappNumber = "5521969187827";
 
-  const whatsappLink = useMemo(
-    () => `https://wa.me/${whatsappNumber}`,
-    [whatsappNumber]
-  );
+  const whatsappLink = useMemo(() => {
+    return `https://wa.me/${whatsappNumber}`;
+  }, []);
 
   const scrollToId = (id) => {
     setOpen(false);
@@ -59,13 +56,11 @@ export default function Home() {
   };
 
   return (
-   <main className="bg-black text-white">
-
+    <main className="bg-black text-white overflow-x-hidden">
       {/* POPUP */}
       {showPromo && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
           <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-yellow-400/30 bg-gradient-to-br from-green-700 via-green-600 to-blue-700 p-8 shadow-2xl">
-
             <button
               onClick={() => setShowPromo(false)}
               className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-2xl font-bold text-white transition hover:bg-black/50"
@@ -78,7 +73,7 @@ export default function Home() {
 
             <div className="text-center">
               <span className="mb-4 inline-block rounded-full bg-yellow-400 px-5 py-2 text-sm font-bold uppercase tracking-widest text-black shadow-lg">
-                Promoção Especial de Junho
+                Promoção Especial Copa do Mundo
               </span>
 
               <h2 className="mb-6 text-4xl font-black leading-tight text-white md:text-5xl">
@@ -90,14 +85,16 @@ export default function Home() {
               <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
                 Veículos que vierem por seguradora ganham
                 <span className="font-black text-yellow-300">
-                  {" "}POLIMENTO TÉCNICO GRATUITO
+                  {" "}
+                  POLIMENTO TÉCNICO GRATUITO
                 </span>
               </p>
 
               <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/90">
-                Clientes que vierem pelo site ganham
+                Clientes vindos pelo site recebem
                 <span className="font-black text-yellow-300">
-                  {" "}10% OFF NO PARTICULAR
+                  {" "}
+                  10% OFF NO PARTICULAR
                 </span>
               </p>
 
@@ -126,67 +123,60 @@ export default function Home() {
       )}
 
       {/* TOP BAR */}
-      <div className="bg-gradient-to-r from-cyan-600 to-sky-500 text-white py-2">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
-
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <div className="flex items-center gap-2">
-                <PhoneIcon className="w-4 h-4" />
-                <span>(21) 96918-7827 / (21) 98222-7699</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <PinIcon className="w-4 h-4" />
-                <span>Barra da Tijuca - RJ</span>
-              </div>
+      <div className="bg-gradient-to-r from-cyan-600 to-sky-500 py-2 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 text-sm md:flex-row md:px-6">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="flex items-center gap-2">
+              <PhoneIcon className="h-4 w-4" />
+              <span>(21) 96918-7827 / (21) 98222-7699</span>
             </div>
 
             <div className="flex items-center gap-2">
-              <ClockIcon className="w-4 h-4" />
-              <span>Atendimento rápido no WhatsApp</span>
+              <PinIcon className="h-4 w-4" />
+              <span>Barra da Tijuca - RJ</span>
             </div>
+          </div>
 
+          <div className="flex items-center gap-2">
+            <ClockIcon className="h-4 w-4" />
+            <span>Atendimento rápido no WhatsApp</span>
           </div>
         </div>
       </div>
 
       {/* HEADER */}
-      <header className="bg-black/90 backdrop-blur-md border-b border-cyan-500/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-
-          <nav className="flex items-center justify-between h-16 md:h-20">
-
-            {/* LOGO */}
+      <header className="sticky top-0 z-50 border-b border-cyan-500/20 bg-black/90 backdrop-blur-md">
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <nav className="flex h-16 items-center justify-between md:h-20">
             <button
               type="button"
               className="flex items-center gap-3 text-left"
               onClick={() => scrollToId("hero")}
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden bg-white/10 border border-white/10">
+              <div className="h-10 w-10 overflow-hidden rounded-xl border border-white/10 bg-white/10 md:h-12 md:w-12">
                 <img
                   src="/logo.png"
                   alt="BLINK Logo"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
 
               <div className="leading-tight">
-                <div className="text-lg md:text-2xl font-bold text-white">
+                <div className="text-lg font-bold text-white md:text-2xl">
                   BLINK{" "}
                   <span className="text-cyan-400">
                     ESTÉTICA AUTOMOTIVA
                   </span>
                 </div>
 
-                <p className="text-xs text-cyan-400 font-semibold hidden md:block">
+                <p className="hidden text-xs font-semibold text-cyan-400 md:block">
                   Onde estética vira padrão
                 </p>
               </div>
             </button>
 
-            {/* MENU DESKTOP */}
-            <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+            {/* DESKTOP MENU */}
+            <ul className="hidden items-center gap-6 lg:gap-8 md:flex">
               {[
                 ["servicos", "Serviços"],
                 ["porque", "Por que nós?"],
@@ -198,7 +188,7 @@ export default function Home() {
                   <button
                     type="button"
                     onClick={() => scrollToId(id)}
-                    className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
+                    className="font-medium text-gray-300 transition-colors hover:text-cyan-400"
                   >
                     {label}
                   </button>
@@ -210,7 +200,7 @@ export default function Home() {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold h-9 px-4 rounded-md inline-flex items-center justify-center"
+                  className="inline-flex h-9 items-center justify-center rounded-md bg-cyan-500 px-4 font-semibold text-black hover:bg-cyan-600"
                 >
                   WhatsApp
                 </a>
@@ -220,20 +210,52 @@ export default function Home() {
             {/* MOBILE BUTTON */}
             <button
               type="button"
-              className="md:hidden text-white"
+              className="text-white md:hidden"
               onClick={() => setOpen(!open)}
             >
-              <MenuIcon className="w-6 h-6" />
+              <MenuIcon className="h-6 w-6" />
             </button>
-
           </nav>
+
+          {/* MOBILE MENU */}
+          {open && (
+            <div className="border-t border-white/10 py-4 md:hidden">
+              <div className="flex flex-col gap-4">
+                {[
+                  ["servicos", "Serviços"],
+                  ["porque", "Por que nós?"],
+                  ["avaliacoes", "Avaliações"],
+                  ["galeria", "Galeria"],
+                  ["contato", "Contato"],
+                ].map(([id, label]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => scrollToId(id)}
+                    className="text-left text-gray-300 hover:text-cyan-400"
+                  >
+                    {label}
+                  </button>
+                ))}
+
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-cyan-500 py-3 font-semibold text-black"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center px-6 text-center"
+        className="relative flex min-h-screen items-center justify-center px-6 text-center"
         style={{
           backgroundImage: "url('/hero.jpg')",
           backgroundSize: "cover",
@@ -243,29 +265,28 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-5xl">
-
-          <span className="inline-flex items-center gap-2 mb-6 px-5 py-2 text-sm font-medium rounded-full bg-cyan-500/15 text-cyan-400 backdrop-blur">
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-cyan-500/15 px-5 py-2 text-sm font-medium text-cyan-400 backdrop-blur">
             ✦ Onde estética vira padrão
           </span>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+          <h1 className="mb-6 text-4xl font-extrabold leading-tight md:text-6xl">
             Oficina Estética Automotiva na{" "}
             <span className="text-cyan-400">
               Barra da Tijuca
             </span>
           </h1>
 
-          <p className="text-gray-200 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-gray-200 md:text-lg">
             Especialistas em lanternagem, pintura e polimento técnico.
             Qualidade, transparência e confiança em cada detalhe.
           </p>
 
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black px-7 py-3 rounded-lg font-semibold transition"
+              className="flex items-center gap-2 rounded-lg bg-cyan-500 px-7 py-3 font-semibold text-black transition hover:bg-cyan-600"
             >
               WhatsApp
             </a>
@@ -273,29 +294,26 @@ export default function Home() {
             <button
               type="button"
               onClick={() => scrollToId("servicos")}
-              className="border border-cyan-400 text-cyan-400 px-7 py-3 rounded-lg hover:bg-cyan-400/10 transition"
+              className="rounded-lg border border-cyan-400 px-7 py-3 text-cyan-400 transition hover:bg-cyan-400/10"
             >
               Ver Serviços
             </button>
           </div>
-
         </div>
       </section>
 
       {/* SEGURADORAS */}
-      <section className="py-20 bg-[#050b14]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-
-          <h2 className="text-3xl font-bold mb-2">
-            Trabalhamos com as melhores seguradoras do mercado
+      <section className="bg-[#050b14] py-20">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <h2 className="mb-2 text-3xl font-bold">
+            Trabalhamos com as melhores seguradoras
           </h2>
 
-          <p className="text-gray-400 mb-10">
-            Atendemos todos os sinistros com agilidade e profissionalismo
+          <p className="mb-10 text-gray-400">
+            Atendimento ágil para sinistros e seguradoras
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
             {[
               { nome: "Porto Seguro", img: "/porto.png" },
               { nome: "Azul Seguros", img: "/azul.png" },
@@ -304,13 +322,13 @@ export default function Home() {
             ].map((s) => (
               <div
                 key={s.nome}
-                className="bg-[#0b1627]/70 border border-white/10 rounded-2xl px-6 py-5 flex items-center justify-center gap-4 backdrop-blur"
+                className="flex items-center justify-center gap-4 rounded-2xl border border-white/10 bg-[#0b1627]/70 px-6 py-5 backdrop-blur"
               >
-                <div className="w-12 h-12 rounded-xl overflow-hidden bg-black/30">
+                <div className="h-12 w-12 overflow-hidden rounded-xl bg-black/30">
                   <img
                     src={s.img}
                     alt={s.nome}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
 
@@ -319,11 +337,364 @@ export default function Home() {
                 </span>
               </div>
             ))}
-
           </div>
         </div>
       </section>
 
+      {/* SOBRE */}
+      <section className="bg-[#0a1220] py-16">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <h2 className="text-3xl font-extrabold md:text-4xl">
+            Sobre a BLINK Estética Automotiva
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-5xl leading-relaxed text-gray-300">
+            Aqui você encontra qualidade, transparência e confiança.
+            Lanternagem, pintura e acabamento com foco em precisão,
+            cuidado e excelência.
+          </p>
+        </div>
+      </section>
+
+      {/* SERVIÇOS */}
+      <section id="servicos" className="bg-[#050b14] py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="mb-12 text-center text-3xl font-extrabold md:text-4xl">
+            Nossos Serviços
+          </h2>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              "Pintura Automotiva",
+              "Polimento Técnico",
+              "Lanternagem",
+              "Detalhamento",
+              "Acabamento",
+              "Retoque",
+            ].map((serv) => (
+              <div
+                key={serv}
+                className="rounded-2xl border border-cyan-500/15 bg-[#0b1627] p-6"
+              >
+                <h3 className="text-lg font-bold">
+                  {serv}
+                </h3>
+
+                <p className="mt-2 text-sm text-gray-400">
+                  Serviço profissional com acabamento premium.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* POR QUE NÓS */}
+      <section id="porque" className="bg-[#0a1220] py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-extrabold md:text-5xl">
+            Por que escolher a BLINK?
+          </h2>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              "Cuidado em cada detalhe",
+              "Equipe especializada",
+              "Atendimento rápido",
+              "Garantia de qualidade",
+              "Entrega no prazo",
+              "Resultado premium",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-white/10 bg-[#0b1627] p-7"
+              >
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-500/20 text-cyan-300">
+                  <CheckIcon className="h-7 w-7" />
+                </div>
+
+                <h3 className="text-xl font-bold">
+                  {item}
+                </h3>
+
+                <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                  Atendimento profissional com foco em qualidade e acabamento.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AVALIAÇÕES */}
+      <section id="avaliacoes" className="bg-[#050b14] py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-extrabold md:text-5xl">
+            Resultados que Falam por Si
+          </h2>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              "Serviço impecável e entrega rápida.",
+              "Atendimento excelente e pintura perfeita.",
+              "Profissionais muito cuidadosos.",
+              "Melhor oficina da Barra.",
+              "Carro entregue antes do prazo.",
+              "Acabamento premium.",
+            ].map((txt, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-white/10 bg-[#0b1627] p-7"
+              >
+                <div className="mb-4 flex items-center gap-1 text-cyan-400">
+                  <StarIcon className="h-5 w-5" />
+                  <StarIcon className="h-5 w-5" />
+                  <StarIcon className="h-5 w-5" />
+                  <StarIcon className="h-5 w-5" />
+                  <StarIcon className="h-5 w-5" />
+                </div>
+
+                <p className="italic leading-relaxed text-gray-300">
+                  “{txt}”
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GALERIA */}
+      <section id="galeria" className="bg-black py-20">
+        <h2 className="mb-12 text-center text-3xl font-bold">
+          Nossa Galeria de Trabalhos
+        </h2>
+
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 md:grid-cols-3">
+          {[
+            "/galeria/1.jpg",
+            "/galeria/2.jpg",
+            "/galeria/3.jpg",
+            "/galeria/4.jpg",
+            "/galeria/5.jpg",
+            "/galeria/6.jpg",
+          ].map((src, i) => (
+            <div
+              key={src}
+              className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b1627]/40"
+            >
+              <img
+                src={src}
+                alt={`Trabalho realizado ${i + 1}`}
+                className="h-64 w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section id="contato" className="bg-[#0a1220] py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-extrabold md:text-5xl">
+            Entre em Contato
+          </h2>
+
+          <div className="mt-12 grid gap-8 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-black/40 p-8">
+              <h3 className="text-2xl font-extrabold text-cyan-400">
+                Nossa Unidade
+              </h3>
+
+              <div className="mt-6 rounded-xl border border-cyan-500/15 bg-[#0b1627] p-6">
+                <p className="font-bold text-cyan-300">
+                  Unidade Barra da Tijuca
+                </p>
+
+                <p className="mt-2 text-gray-300">
+                  Rua Joathur Bueno, 272
+                </p>
+
+                <p className="text-gray-300">
+                  Barra da Tijuca - RJ
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+              <h3 className="text-2xl font-extrabold">
+                Solicitar Orçamento
+              </h3>
+
+              <div className="mt-6 space-y-5">
+                <input
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  placeholder="Seu nome"
+                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
+                />
+
+                <input
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
+                  placeholder="Telefone"
+                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
+                />
+
+                <select
+                  value={tipo}
+                  onChange={(e) => setTipo(e.target.value)}
+                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
+                >
+                  <option value="">Selecione...</option>
+                  <option value="Orçamento">Orçamento</option>
+                  <option value="Agendamento">Agendamento</option>
+                </select>
+
+                <select
+                  value={servico}
+                  onChange={(e) => setServico(e.target.value)}
+                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
+                >
+                  <option value="">Serviço...</option>
+                  <option value="Pintura">Pintura</option>
+                  <option value="Lanternagem">Lanternagem</option>
+                </select>
+
+                <textarea
+                  rows={5}
+                  value={descricao}
+                  onChange={(e) => setDescricao(e.target.value)}
+                  placeholder="Descrição"
+                  className="w-full resize-none rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
+                />
+
+                <button
+                  type="button"
+                  onClick={enviarWhatsApp}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 py-3 font-extrabold text-black transition hover:bg-cyan-600"
+                >
+                  Enviar pelo WhatsApp
+                  <ArrowRightIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-gradient-to-r from-cyan-600 to-sky-500 py-20 text-center">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-4xl font-extrabold text-white md:text-6xl">
+            Agende seu serviço hoje mesmo
+          </h2>
+
+          <p className="mt-4 text-base text-white/90 md:text-lg">
+            Entre em contato pelo WhatsApp.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-7 py-3 font-extrabold text-cyan-300"
+            >
+              <PhoneIcon className="h-5 w-5" />
+              Falar no WhatsApp
+            </a>
+
+            <button
+              type="button"
+              onClick={() => scrollToId("contato")}
+              className="rounded-lg bg-white px-7 py-3 font-extrabold text-black"
+            >
+              Solicitar Orçamento
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-black py-14">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-10 md:grid-cols-3">
+            <div>
+              <div className="flex items-start gap-4">
+                <div className="h-10 w-10 overflow-hidden rounded-xl border border-white/10 bg-white/10">
+                  <img
+                    src="/logo.png"
+                    alt="BLINK Logo"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div>
+                  <p className="font-extrabold text-cyan-400">
+                    BLINK ESTÉTICA AUTOMOTIVA
+                  </p>
+
+                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-gray-400">
+                    Onde estética vira padrão.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p className="font-extrabold text-white">
+                Serviços
+              </p>
+
+              <ul className="mt-4 space-y-2 text-sm text-gray-300">
+                {[
+                  "Pintura Automotiva",
+                  "Polimento Técnico",
+                  "Lanternagem",
+                  "Detalhamento",
+                ].map((s) => (
+                  <li key={s} className="flex items-center gap-2">
+                    <CheckIcon className="h-4 w-4 text-cyan-400" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-extrabold text-white">
+                Contato
+              </p>
+
+              <ul className="mt-4 space-y-3 text-sm text-gray-300">
+                <li className="flex items-center gap-2">
+                  <PhoneIcon className="h-4 w-4 text-cyan-400" />
+                  (21) 96918-7827
+                </li>
+
+                <li className="flex items-center gap-2">
+                  <PinIcon className="h-4 w-4 text-cyan-400" />
+                  Barra da Tijuca - RJ
+                </li>
+              </ul>
+
+              <a
+                href="https://instagram.com/blinkesteticaauto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block font-semibold text-cyan-400"
+              >
+                @blinkesteticaauto
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-gray-500">
+            © 2026 BLINK Estética Automotiva LTDA.
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
@@ -339,7 +710,7 @@ function PhoneIcon({ className }) {
       stroke="currentColor"
       strokeWidth="2"
     >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5.11 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.09 11.91a16 16 0 0 0 6 6l2.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5.11 3h3a2 2 0 0 1 2 1.72" />
     </svg>
   );
 }
@@ -353,8 +724,7 @@ function PinIcon({ className }) {
       stroke="currentColor"
       strokeWidth="2"
     >
-      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
+      <path d="M21 10c0 7-9 13-9 13S3 17 3 10" />
     </svg>
   );
 }
@@ -369,7 +739,6 @@ function ClockIcon({ className }) {
       strokeWidth="2"
     >
       <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
     </svg>
   );
 }
@@ -389,528 +758,8 @@ function MenuIcon({ className }) {
     </svg>
   );
 }
-```
 
-
-      {/* SOBRE (print) */}
-      <section className="py-16 bg-[#0a1220]">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold">
-            Sobre a BLINK Estética Automotiva
-          </h2>
-
-          <p className="text-gray-300 max-w-5xl mx-auto mt-4 leading-relaxed">
-            Aqui você encontra qualidade, transparência e confiança. Lanternagem,
-            pintura e acabamento com foco em precisão, cuidado e excelência.
-            Transformamos a estética do seu veículo em um padrão de qualidade
-            superior na Barra da Tijuca.
-          </p>
-
-          <div className="mt-10 flex flex-col md:flex-row gap-6 items-center justify-center text-gray-200">
-            <div className="inline-flex items-center gap-2">
-              <CheckIcon className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm md:text-base text-gray-300">
-                Desde 2019
-              </span>
-            </div>
-            <div className="inline-flex items-center gap-2">
-              <CheckIcon className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm md:text-base text-gray-300">
-                Resultados que falam por si
-              </span>
-            </div>
-            <div className="inline-flex items-center gap-2">
-              <CheckIcon className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm md:text-base text-gray-300">
-                Cuidado em cada detalhe
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVIÇOS (sem cristalização, como você pediu) */}
-      <section id="servicos" className="py-20 bg-[#050b14]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">
-            Nossos Serviços
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { t: "Pintura Automotiva", d: "Serviço profissional com acabamento de alto padrão." },
-              { t: "Polimento Técnico", d: "Serviço profissional com acabamento de alto padrão." },
-              { t: "Lanternagem", d: "Serviço profissional com acabamento de alto padrão." },
-              { t: "Detalhamento", d: "Serviço profissional com acabamento de alto padrão." },
-              { t: "Acabamento", d: "Serviço profissional com acabamento de alto padrão." },
-            ].map((card) => (
-              <div
-                key={card.t}
-                className="rounded-2xl bg-[#0b1627] border border-cyan-500/15 p-6 shadow-[0_0_0_1px_rgba(34,211,238,0.06)]"
-              >
-                <h3 className="text-lg font-bold">{card.t}</h3>
-                <p className="text-gray-400 mt-2 text-sm">{card.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* POR QUE NÓS (print com 6 cards) */}
-      <section id="porque" className="py-20 bg-[#0a1220]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-center">
-            Por que escolher a BLINK Estética Automotiva?
-          </h2>
-          <p className="text-center text-gray-400 mt-3">
-            6 motivos para confiar em nosso trabalho
-          </p>
-
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <SparkBoxIcon />,
-                t: "Cuidado em Cada Detalhe",
-                d: "Na Blink, o segredo está nos detalhes. Cada serviço é realizado com precisão e dedicação.",
-              },
-              {
-                icon: <BoltBoxIcon />,
-                t: "Atendimento Rápido no WhatsApp",
-                d: "Atendimento ágil e direto pelo WhatsApp para orçamentos e agendamentos.",
-              },
-              {
-                icon: <ThumbBoxIcon />,
-                t: "Resultados que Falam por Si",
-                d: "Trabalho de excelência visível na qualidade de cada serviço entregue.",
-              },
-              {
-                icon: <UsersBoxIcon />,
-                t: "Equipe Especializada",
-                d: "Profissionais experientes focados em estética automotiva de alta qualidade.",
-              },
-              {
-                icon: <ShieldBoxIcon />,
-                t: "Garantia de Qualidade",
-                d: "Todos os serviços realizados com garantia, proporcionando total tranquilidade.",
-              },
-              {
-                icon: <MedalBoxIcon />,
-                t: "Estética que Vira Padrão",
-                d: "Nossa missão é transformar estética em padrão de qualidade na Barra da Tijuca.",
-              },
-            ].map((c) => (
-              <div
-                key={c.t}
-                className="rounded-2xl bg-[#0b1627] border border-white/10 p-7 shadow-[0_0_0_1px_rgba(255,255,255,0.04)]"
-              >
-                <div className="w-14 h-14 rounded-xl bg-cyan-500/20 border border-cyan-400/20 flex items-center justify-center text-cyan-300 mb-6">
-                  {c.icon}
-                </div>
-                <h3 className="text-xl font-extrabold">{c.t}</h3>
-                <p className="text-gray-400 mt-3 leading-relaxed text-sm">
-                  {c.d}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AVALIAÇÕES (print) */}
-      <section id="avaliacoes" className="py-20 bg-[#050b14]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-center">
-            Resultados que Falam por Si
-          </h2>
-          <p className="text-center text-gray-400 mt-3">
-            Veja o que nossos clientes dizem sobre nosso trabalho
-          </p>
-
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Rosa Maria de Carvalho Wanderley",
-                text:
-                  "“Levei meu UP! Cheio de amassados e para-choque quebrado. Essa oficina deixou ele LINDO de novo! São detalhistas, cuidadosos e muito profissionais. Pintura perfeita, lisinha, macia ao toque, um brilho perfeito. Fiquei impressionada e muito feliz! Super recomendo! Meu carro tá lindo! E entregaram antes do prazo!”",
-              },
-              {
-                name: "Renato Veloso",
-                text:
-                  "“Entregaram meu carro em 24h, serviço de lanternagem e pintura muito bem executado e o valor cobrado muito justo. Ficou excelente! e ainda deram um geral. Farei outros serviços com certeza”",
-              },
-              {
-                name: "José Pereira",
-                text:
-                  "“Atendimento ótimo! Cumprrem o prazo! Mão de obra impecável! Ainda entregaram o carro lavado e aspirado, nota 10!”",
-              },
-              {
-                name: "Mayra Paula Cristina",
-                text:
-                  "“Foi uma ótima experiência. Pessoal sério, comprometido com prazos com acabamento muito atenciosos sempre informando o progresso do serviço. Curti muito mesmo.”",
-              },
-              {
-                name: "Vanessa Moreira",
-                text:
-                  "“Atendimento e serviços espetaculares. No meu caso, recebi meu carro com um dia de antecedência. Com certeza indico para todos os meus amigos. Impecável.”",
-              },
-              {
-                name: "Eduardo Junior",
-                text:
-                  "“Deram 10 dias, foi me entregue em 5 dias. Entregaram o carro lavado por dentro e por fora. Atendimento profissional e cordial.”",
-              },
-            ].map((a) => (
-              <div
-                key={a.name}
-                className="rounded-2xl bg-[#0b1627] border border-white/10 p-7"
-              >
-                <div className="flex items-center gap-2 mb-4 text-cyan-400">
-                  <StarIcon className="w-6 h-6" />
-                  <StarIcon className="w-6 h-6" />
-                  <StarIcon className="w-6 h-6" />
-                  <StarIcon className="w-6 h-6" />
-                  <StarIcon className="w-6 h-6" />
-                </div>
-
-                <p className="text-gray-300 leading-relaxed italic text-sm">
-                  {a.text}
-                </p>
-
-                <p className="mt-6 text-cyan-400 font-semibold text-sm">
-                  – {a.name}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 flex justify-center">
-            <a
-              href="https://www.google.com/search?q=BLINK+Est%C3%A9tica+Automotiva+Barra+da+Tijuca"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-cyan-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-cyan-600 transition"
-            >
-              <StarIcon className="w-5 h-5" />
-              Ver avaliações no Google
-            </a>
-          </div>
-        </div>
-      </section>
-
-   <section id="galeria" className="py-20 bg-black">
-  <h2 className="text-3xl font-bold text-center mb-12">
-    Nossa Galeria de Trabalhos
-  </h2>
-
-  <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
-    {[
-      "/galeria/1.jpg",
-      "/galeria/2.jpg",
-      "/galeria/3.jpg",
-      "/galeria/4.jpg",
-      "/galeria/5.jpg",
-      "/galeria/6.jpg",
-    ].map((src, i) => (
-      <div
-        key={i}
-        className="rounded-2xl overflow-hidden border border-white/10 bg-[#0b1627]/40"
-      >
-        <img
-          src={src}
-          alt={`Trabalho realizado ${i + 1}`}
-          className="w-full h-64 object-cover"
-          loading="lazy"
-        />
-      </div>
-    ))}
-  </div>
-</section>
-
-      {/* CONTATO (print) */}
-      <section id="contato" className="py-20 bg-[#0a1220]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-center">
-            Entre em Contato
-          </h2>
-          <p className="text-center text-gray-400 mt-3">
-            Atendimento rápido no WhatsApp. Fale com a gente!
-          </p>
-
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
-            {/* Left card */}
-            <div className="rounded-2xl bg-black/40 border border-white/10 p-8">
-              <h3 className="text-2xl font-extrabold text-cyan-400">
-                Nossa Unidade
-              </h3>
-
-              <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
-                <p className="text-cyan-300 font-bold">Unidade Barra da Tijuca</p>
-                <p className="text-gray-300 mt-2">Rua Joathur Bueno, 272</p>
-                <p className="text-gray-300">Barra da Tijuca - RJ</p>
-
-                <div className="mt-4 space-y-2 text-cyan-300 font-semibold">
-                  <p>(21) 96918-7827</p>
-                  <p>(21) 98222-7699</p>
-                </div>
-              </div>
-
-              <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
-                <p className="text-cyan-300 font-bold">Horário de Funcionamento</p>
-                <p className="text-gray-200 mt-2 font-semibold">
-                  Segunda a Sexta: 08:00–18:00
-                </p>
-              </div>
-
-              <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
-                <p className="text-cyan-300 font-bold">Telefone Fixo</p>
-                <p className="text-gray-200 mt-2 font-semibold">(21) 2439-4259</p>
-              </div>
-
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 text-black font-bold py-3 hover:bg-cyan-600 transition"
-                >
-                  <PhoneIcon className="w-5 h-5" />
-                  WhatsApp
-                </a>
-
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-cyan-600 font-bold py-3 hover:opacity-90 transition"
-                >
-                  <PinIcon className="w-5 h-5" />
-                  Como Chegar
-                </a>
-              </div>
-            </div>
-
-            {/* Right card */}
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-              <h3 className="text-2xl font-extrabold">Solicitar Orçamento</h3>
-
-              <div className="mt-6 space-y-5">
-                <div>
-                  <label className="text-sm font-semibold text-gray-200">
-                    Nome Completo
-                  </label>
-                  <input
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    placeholder="Seu nome completo"
-                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold text-gray-200">
-                    Telefone / WhatsApp
-                  </label>
-                  <input
-                    value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
-                    placeholder="(00) 00000-0000"
-                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold text-gray-200">
-                    Tipo de Atendimento
-                  </label>
-                  <select
-                    value={tipo}
-                    onChange={(e) => setTipo(e.target.value)}
-                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-200 outline-none focus:border-cyan-400/60"
-                  >
-                    <option value="">Selecione...</option>
-                    <option value="Orçamento">Orçamento</option>
-                    <option value="Agendamento">Agendamento</option>
-                    <option value="Sinistro / Seguradora">Sinistro / Seguradora</option>
-                    <option value="Dúvidas">Dúvidas</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold text-gray-200">
-                    Serviço de Interesse
-                  </label>
-                  <select
-                    value={servico}
-                    onChange={(e) => setServico(e.target.value)}
-                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-200 outline-none focus:border-cyan-400/60"
-                  >
-                    <option value="">Selecione o serviço...</option>
-                    <option value="Pintura Automotiva">Pintura Automotiva</option>
-                    <option value="Polimento Técnico">Polimento Técnico</option>
-                    <option value="Lanternagem">Lanternagem</option>
-                    <option value="Detalhamento">Detalhamento</option>
-                    <option value="Acabamento">Acabamento</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold text-gray-200">
-                    Descrição do Serviço
-                  </label>
-                  <textarea
-                    value={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
-                    placeholder="Descreva o serviço necessário (ex: polimento no capô, pintura na porta direita...)"
-                    rows={5}
-                    className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60 resize-none"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={enviarWhatsApp}
-                  className="w-full rounded-xl bg-cyan-500 text-black font-extrabold py-3 hover:bg-cyan-600 transition inline-flex items-center justify-center gap-2"
-                >
-                  Enviar pelo WhatsApp <ArrowRightIcon className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA FINAL (print do final do site) */}
-      <section className="py-20 bg-gradient-to-r from-cyan-600 to-sky-500 text-center">
-        <div className="max-w-5xl mx-auto px-6">
-          <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold rounded-full bg-black/20 text-white border border-white/20 backdrop-blur">
-            <SparkIcon className="w-4 h-4" />
-            Onde estética vira padrão
-          </span>
-
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
-            Agende seu serviço hoje mesmo
-          </h2>
-
-          <p className="mt-4 text-white/90 text-base md:text-lg">
-            Entre em contato pelo WhatsApp e descubra a qualidade que transformou
-            a estética automotiva na Barra da Tijuca!
-          </p>
-
-          <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-black text-cyan-300 font-extrabold px-7 py-3 rounded-lg hover:opacity-90 transition"
-            >
-              <PhoneIcon className="w-5 h-5" />
-              Falar no WhatsApp
-            </a>
-
-            <button
-              type="button"
-              onClick={() => scrollToId("contato")}
-              className="inline-flex items-center justify-center bg-white text-black font-extrabold px-7 py-3 rounded-lg hover:opacity-90 transition"
-            >
-              Solicitar Orçamento
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER (igual print) */}
-      <footer className="bg-black py-14">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-10 items-start">
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl overflow-hidden bg-white/10 border border-white/10">
-                  <img
-                    src="/logo.png"
-                    alt="BLINK Logo"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div>
-                  <p className="font-extrabold text-cyan-400">
-                    BLINK ESTÉTICA AUTOMOTIVA
-                  </p>
-                  <p className="text-gray-400 mt-2 text-sm leading-relaxed max-w-sm">
-                    Onde estética vira padrão. Especialistas em Lanternagem,
-                    pintura e polimento técnico na Barra da Tijuca.
-                  </p>
-                  <p className="text-gray-500 mt-4 text-xs">
-                    CNPJ: 33.795.707/0001-90
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <p className="font-extrabold text-white">Serviços</p>
-              <ul className="mt-4 space-y-2 text-gray-300 text-sm">
-                {[
-                  "Pintura Automotiva",
-                  "Polimento Técnico",
-                  "Lanternagem",
-                  "Detalhamento",
-                ].map((s) => (
-                  <li key={s} className="flex items-center gap-2">
-                    <CheckIcon className="w-4 h-4 text-cyan-400" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="font-extrabold text-white">Contato</p>
-              <ul className="mt-4 space-y-3 text-gray-300 text-sm">
-                <li className="flex items-center gap-2">
-                  <PhoneIcon className="w-4 h-4 text-cyan-400" />
-                  (21) 96918-7827
-                </li>
-                <li className="flex items-center gap-2">
-                  <PhoneIcon className="w-4 h-4 text-cyan-400" />
-                  (21) 98222-7699
-                </li>
-                <li className="flex items-center gap-2">
-                  <PhoneIcon className="w-4 h-4 text-cyan-400" />
-                  (21) 2439-4259
-                </li>
-                <li className="flex items-center gap-2">
-                  <PinIcon className="w-4 h-4 text-cyan-400" />
-                  Barra da Tijuca - RJ
-                </li>
-              </ul>
-
-              <p className="mt-6 text-cyan-400 font-semibold text-sm">
-<a
-  href="https://instagram.com/blinkesteticaauto"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-cyan-400 font-semibold hover:text-cyan-300 transition"
->
-  @blinkesteticaauto
-</a>
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12 border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
-            © 2026 BLINK Estética Automotiva LTDA. Todos os direitos reservados.
-          </div>
-        </div>
-      </footer>
-    </main>
-  );
-}
-
-/* =======================
-   ICONES (sem biblioteca)
-======================= */
-
-function PhoneIcon({ className }) {
+function CheckIcon({ className }) {
   return (
     <svg
       className={className}
@@ -918,66 +767,8 @@ function PhoneIcon({ className }) {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
     >
-      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-    </svg>
-  );
-}
-
-function PinIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
-
-function ClockIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M12 6v6l4 2" />
-      <circle cx="12" cy="12" r="10" />
-    </svg>
-  );
-}
-
-function MenuIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M4 12h16" />
-      <path d="M4 6h16" />
-      <path d="M4 18h16" />
+      <path d="M20 6L9 17l-5-5" />
     </svg>
   );
 }
@@ -988,43 +779,8 @@ function StarIcon({ className }) {
       className={className}
       viewBox="0 0 24 24"
       fill="currentColor"
-      aria-hidden="true"
     >
-      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
-function SparkIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M12 2l1.5 6L20 10l-6.5 2L12 18l-1.5-6L4 10l6.5-2L12 2z" />
+      <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
     </svg>
   );
 }
@@ -1037,104 +793,10 @@ function ArrowRightIcon({ className }) {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
     >
       <path d="M5 12h14" />
-      <path d="m13 5 7 7-7 7" />
+      <path d="M13 5l7 7-7 7" />
     </svg>
   );
 }
-
-/* ===== Icones dos cards "Por que nós" ===== */
-function SparkBoxIcon() {
-  return <SparkIcon className="w-7 h-7" />;
-}
-function BoltBoxIcon() {
-  return (
-    <svg
-      className="w-7 h-7"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-    </svg>
-  );
-}
-function ThumbBoxIcon() {
-  return (
-    <svg
-      className="w-7 h-7"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M14 9V5a3 3 0 0 0-3-3l-1 7" />
-      <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-      <path d="M7 11h8a2 2 0 0 1 2 2l-1 7a2 2 0 0 1-2 2H7V11z" />
-    </svg>
-  );
-}
-function UsersBoxIcon() {
-  return (
-    <svg
-      className="w-7 h-7"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M17 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M7 21v-2a4 4 0 0 1 4-4h2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-  );
-}
-function ShieldBoxIcon() {
-  return (
-    <svg
-      className="w-7 h-7"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  );
-}
-function MedalBoxIcon() {
-  return (
-    <svg
-      className="w-7 h-7"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="8" r="6" />
-      <path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5" />
-    </svg>
-  );
-}
+```
