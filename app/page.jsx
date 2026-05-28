@@ -239,35 +239,66 @@ export default function Home() {
           </div>
         </div>
       </section>
-       <section className="bg-[#050b14] py-20">
-    <div className="mx-auto max-w-7xl px-6 text-center">
-      <h2 className="mb-2 text-3xl font-bold">
-        Trabalhamos com as melhores seguradoras do mercado
-      </h2>
+      {/* SEGURADORAS */}
+<section className="bg-[#050b14] py-20">
+  <div className="mx-auto max-w-7xl px-6 text-center">
 
-      <p className="mb-10 text-gray-400">
-        Atendemos todos os sinistros com agilidade e profissionalismo
-      </p>
+    <h2 className="mb-3 text-3xl font-extrabold md:text-4xl">
+      Trabalhamos com as melhores seguradoras do mercado
+    </h2>
 
-      <div className="grid gap-6 md:grid-cols-4">
-        {[
-          { nome: "Porto Seguro", img: "/porto.png" },
-          { nome: "Azul Seguros", img: "/azul.png" },
-          { nome: "Itaú Seguros", img: "/itau.png" },
-          { nome: "Demais Seguradoras", img: "/demais.png" },
-        ].map((s) => (
-          <div
-            key={s.nome}
-            className="flex items-center justify-center gap-4 rounded-2xl border border-white/10 bg-[#0b1627]/70 px-6 py-5"
-          >
-            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-black/30">
-              <img
-                src={s.img}
-                alt={s.nome}
-                className="h-full w-full object-cover"
-              />
-            </div>
+    <p className="mx-auto mb-12 max-w-2xl text-gray-400">
+      Atendimento ágil para sinistros, aprovação rápida e suporte completo
+      durante todo o processo.
+    </p>
 
+    <div className="grid gap-6 md:grid-cols-4">
+
+      {[
+        {
+          nome: "Porto Seguro",
+          img: "/porto.png",
+        },
+        {
+          nome: "Azul Seguros",
+          img: "/azul.png",
+        },
+        {
+          nome: "Itaú Seguros",
+          img: "/itau.png",
+        },
+        {
+          nome: "Demais Seguradoras",
+          img: "/demais.png",
+        },
+      ].map((s) => (
+        <div
+          key={s.nome}
+          className="group rounded-2xl border border-white/10 bg-[#0b1627]/70 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/40 hover:shadow-[0_0_35px_rgba(34,211,238,0.18)]"
+        >
+
+          <div className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl bg-black/30 p-3">
+            <img
+              src={s.img}
+              alt={s.nome}
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+
+          <h3 className="mt-5 text-lg font-bold text-white">
+            {s.nome}
+          </h3>
+
+          <p className="mt-2 text-sm text-gray-400">
+            Atendimento especializado para veículos segurados.
+          </p>
+
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
       <section id="servicos" className="py-20 bg-[#050b14]">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-extrabold text-center mb-12">
