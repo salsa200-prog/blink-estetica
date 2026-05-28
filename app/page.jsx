@@ -563,4 +563,13 @@ export default function Home() {
       </section>
     </main>
   );
-}
+}</section>
+
+<footer className="border-t border-cyan-500/10 bg-[#050b14] py-8">
+  <div className="mx-auto max-w-7xl px-6 text-center">
+    <p className="text-sm tracking-wide text-gray-500">
+      © 2026 <span className="font-semibold text-cyan-400">BLINK Estética Automotiva</span>
+      . Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
