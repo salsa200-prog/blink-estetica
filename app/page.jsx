@@ -563,7 +563,6 @@ export default function Home() {
       </section>
     </main>
   );
-}</section>
 
       </section>
       <footer className="border-t border-cyan-500/10 bg-[#050b14] py-8">
