@@ -123,10 +123,10 @@ export default function Home() {
               </h2>
 
               <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
-                Veículos por seguradora ganham
+                Veículos vindo pela seguradora ganham
                 <span className="font-black text-yellow-300">
                   {" "}
-                  POLIMENTO GRÁTIS
+                  POLIMENTO TECNICO GRÁTIS
                 </span>
               </p>
 
