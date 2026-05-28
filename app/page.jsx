@@ -83,7 +83,7 @@ export default function Home() {
               </h2>
 
               <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
-                Veículos que vierem por seguradora ganham
+                Veículos que vierem pela seguradora ganham
                 <span className="font-black text-yellow-300">
                   {" "}
                   POLIMENTO TÉCNICO GRATUITO
