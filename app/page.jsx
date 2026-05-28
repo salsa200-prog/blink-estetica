@@ -596,8 +596,8 @@ function MenuIcon({ className }) {
         </div>
       </section>
 
-      {/* GALERIA */}
-      <section id="galeria" className="py-20 bg-black">
+    {/* GALERIA */}
+<section id="galeria" className="py-20 bg-black">
   <h2 className="text-3xl font-bold text-center mb-12">
     Nossa Galeria de Trabalhos
   </h2>
@@ -612,7 +612,7 @@ function MenuIcon({ className }) {
       "/galeria/6.jpg",
     ].map((src, i) => (
       <div
-        key={src}
+        key={i}
         className="rounded-2xl overflow-hidden border border-white/10 bg-[#0b1627]/40"
       >
         <img
