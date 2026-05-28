@@ -493,101 +493,218 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTATO */}
-      <section id="contato" className="bg-[#0a1220] py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-extrabold md:text-5xl">
-            Entre em Contato
-          </h2>
+     {/* CONTATO */}
+<section id="contato" className="py-20 bg-[#0a1220]">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-center">
+      Entre em Contato
+    </h2>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-black/40 p-8">
-              <h3 className="text-2xl font-extrabold text-cyan-400">
-                Nossa Unidade
-              </h3>
+    <p className="text-center text-gray-400 mt-3">
+      Atendimento rápido no WhatsApp. Fale com a gente!
+    </p>
 
-              <div className="mt-6 rounded-xl border border-cyan-500/15 bg-[#0b1627] p-6">
-                <p className="font-bold text-cyan-300">
-                  Unidade Barra da Tijuca
-                </p>
+    <div className="mt-12 grid md:grid-cols-2 gap-8">
 
-                <p className="text-gray-300 mt-2">Rua Joathur Bueno, 272</p>
-<p className="text-gray-300">Barra da Tijuca - RJ</p>
+      {/* ESQUERDA */}
+      <div className="rounded-2xl bg-black/40 border border-white/10 p-8">
 
-<div className="mt-6 overflow-hidden rounded-2xl border border-cyan-500/20">
-  <iframe
-    src="https://www.google.com/maps?q=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ&output=embed"
-    width="100%"
-    height="260"
-    style={{ border: 0 }}
-    allowFullScreen=""
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+        <h3 className="text-2xl font-extrabold text-cyan-400">
+          Nossa Unidade
+        </h3>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="text-2xl font-extrabold">
-                Solicitar Orçamento
-              </h3>
+        <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
+          <p className="text-cyan-300 font-bold">
+            Unidade Barra da Tijuca
+          </p>
 
-              <div className="mt-6 space-y-5">
-                <input
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                  placeholder="Seu nome"
-                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
-                />
+          <p className="text-gray-300 mt-2">
+            Rua Joathur Bueno, 272
+          </p>
 
-                <input
-                  value={telefone}
-                  onChange={(e) => setTelefone(e.target.value)}
-                  placeholder="Telefone"
-                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
-                />
+          <p className="text-gray-300">
+            Barra da Tijuca - RJ
+          </p>
 
-                <select
-                  value={tipo}
-                  onChange={(e) => setTipo(e.target.value)}
-                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
-                >
-                  <option value="">Selecione...</option>
-                  <option value="Orçamento">Orçamento</option>
-                  <option value="Agendamento">Agendamento</option>
-                </select>
-
-                <select
-                  value={servico}
-                  onChange={(e) => setServico(e.target.value)}
-                  className="w-full rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
-                >
-                  <option value="">Serviço...</option>
-                  <option value="Pintura">Pintura</option>
-                  <option value="Lanternagem">Lanternagem</option>
-                </select>
-
-                <textarea
-                  rows={5}
-                  value={descricao}
-                  onChange={(e) => setDescricao(e.target.value)}
-                  placeholder="Descrição"
-                  className="w-full resize-none rounded-xl border border-white/10 bg-[#0b1627] px-4 py-3 text-white"
-                />
-
-                <button
-                  type="button"
-                  onClick={enviarWhatsApp}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 py-3 font-extrabold text-black transition hover:bg-cyan-600"
-                >
-                  Enviar pelo WhatsApp
-                  <ArrowRightIcon className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
+          <div className="mt-4 space-y-2 text-cyan-300 font-semibold">
+            <p>(21) 96918-7827</p>
+            <p>(21) 98222-7699</p>
           </div>
         </div>
-      </section>
 
+        {/* MAPA */}
+        <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
+          <iframe
+            src="https://www.google.com/maps?q=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ&output=embed"
+            width="100%"
+            height="320"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Mapa BLINK Estética Automotiva"
+            className="w-full"
+          ></iframe>
+        </div>
+
+        <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
+          <p className="text-cyan-300 font-bold">
+            Horário de Funcionamento
+          </p>
+
+          <p className="text-gray-200 mt-2 font-semibold">
+            Segunda a Sexta: 08:00–18:00
+          </p>
+        </div>
+
+        <div className="mt-6 rounded-xl bg-[#0b1627] border border-cyan-500/15 p-6">
+          <p className="text-cyan-300 font-bold">
+            Telefone Fixo
+          </p>
+
+          <p className="text-gray-200 mt-2 font-semibold">
+            (21) 2439-4259
+          </p>
+        </div>
+
+        <div className="mt-8 grid grid-cols-2 gap-4">
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 text-black font-bold py-3 hover:bg-cyan-600 transition"
+          >
+            <PhoneIcon className="w-5 h-5" />
+            WhatsApp
+          </a>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-cyan-600 font-bold py-3 hover:opacity-90 transition"
+          >
+            <PinIcon className="w-5 h-5" />
+            Como Chegar
+          </a>
+
+        </div>
+      </div>
+
+      {/* DIREITA */}
+      <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
+
+        <h3 className="text-2xl font-extrabold">
+          Solicitar Orçamento
+        </h3>
+
+        <div className="mt-6 space-y-5">
+
+          <div>
+            <label className="text-sm font-semibold text-gray-200">
+              Nome Completo
+            </label>
+
+            <input
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              placeholder="Seu nome completo"
+              className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-gray-200">
+              Telefone / WhatsApp
+            </label>
+
+            <input
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+              placeholder="(00) 00000-0000"
+              className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-gray-200">
+              Tipo de Atendimento
+            </label>
+
+            <select
+              value={tipo}
+              onChange={(e) => setTipo(e.target.value)}
+              className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-200 outline-none focus:border-cyan-400/60"
+            >
+              <option value="">Selecione...</option>
+              <option value="Orçamento">Orçamento</option>
+              <option value="Agendamento">Agendamento</option>
+              <option value="Sinistro / Seguradora">
+                Sinistro / Seguradora
+              </option>
+              <option value="Dúvidas">Dúvidas</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-gray-200">
+              Serviço de Interesse
+            </label>
+
+            <select
+              value={servico}
+              onChange={(e) => setServico(e.target.value)}
+              className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-200 outline-none focus:border-cyan-400/60"
+            >
+              <option value="">Selecione o serviço...</option>
+              <option value="Pintura Automotiva">
+                Pintura Automotiva
+              </option>
+              <option value="Polimento Técnico">
+                Polimento Técnico
+              </option>
+              <option value="Lanternagem">
+                Lanternagem
+              </option>
+              <option value="Detalhamento">
+                Detalhamento
+              </option>
+              <option value="Acabamento">
+                Acabamento
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-gray-200">
+              Descrição do Serviço
+            </label>
+
+            <textarea
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+              placeholder="Descreva o serviço necessário..."
+              rows={5}
+              className="mt-2 w-full rounded-xl bg-[#0b1627] border border-white/10 px-4 py-3 text-gray-100 placeholder:text-gray-500 outline-none focus:border-cyan-400/60 resize-none"
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={enviarWhatsApp}
+            className="w-full rounded-xl bg-cyan-500 text-black font-extrabold py-3 hover:bg-cyan-600 transition inline-flex items-center justify-center gap-2"
+          >
+            Enviar pelo WhatsApp
+            <ArrowRightIcon className="w-5 h-5" />
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* CTA */}
       <section className="bg-gradient-to-r from-cyan-600 to-sky-500 py-20 text-center">
         <div className="mx-auto max-w-5xl px-6">
