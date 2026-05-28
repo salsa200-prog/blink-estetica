@@ -118,7 +118,7 @@ export default function Home() {
 
               <h2 className="mb-6 text-4xl font-black leading-tight text-white md:text-5xl">
                 PROMOÇÃO
-                <br />
+          
                 COPA DO MUNDO
               </h2>
 
@@ -132,7 +132,7 @@ export default function Home() {
 
               <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/90">
                 Clientes do site ganham
-                <span className="font-black text-yellow-300"> 10% OFF</span>
+                <span className="font-black text-yellow-300"> 10% OFF EM SERVIÇOS PARTICULAR</span>
               </p>
 
               <div className="flex justify-center">
