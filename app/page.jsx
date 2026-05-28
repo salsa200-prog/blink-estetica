@@ -511,15 +511,20 @@ export default function Home() {
                   Unidade Barra da Tijuca
                 </p>
 
-                <p className="mt-2 text-gray-300">
-                  Rua Joathur Bueno, 272
-                </p>
+                <p className="text-gray-300 mt-2">Rua Joathur Bueno, 272</p>
+<p className="text-gray-300">Barra da Tijuca - RJ</p>
 
-                <p className="text-gray-300">
-                  Barra da Tijuca - RJ
-                </p>
-              </div>
-            </div>
+<div className="mt-6 overflow-hidden rounded-2xl border border-cyan-500/20">
+  <iframe
+    src="https://www.google.com/maps?q=Rua+Joathur+Bueno,+272+Barra+da+Tijuca+RJ&output=embed"
+    width="100%"
+    height="260"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
               <h3 className="text-2xl font-extrabold">
