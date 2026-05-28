@@ -239,6 +239,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+       <section className="bg-[#050b14] py-20">
+    <div className="mx-auto max-w-7xl px-6 text-center">
+      <h2 className="mb-2 text-3xl font-bold">
+        Trabalhamos com as melhores seguradoras do mercado
+      </h2>
+
+      <p className="mb-10 text-gray-400">
+        Atendemos todos os sinistros com agilidade e profissionalismo
+      </p>
+
+      <div className="grid gap-6 md:grid-cols-4">
+        {[
+          { nome: "Porto Seguro", img: "/porto.png" },
+          { nome: "Azul Seguros", img: "/azul.png" },
+          { nome: "Itaú Seguros", img: "/itau.png" },
+          { nome: "Demais Seguradoras", img: "/demais.png" },
+        ].map((s) => (
+          <div
+            key={s.nome}
+            className="flex items-center justify-center gap-4 rounded-2xl border border-white/10 bg-[#0b1627]/70 px-6 py-5"
+          >
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-black/30">
+              <img
+                src={s.img}
+                alt={s.nome}
+                className="h-full w-full object-cover"
+              />
+            </div>
 
       <section id="servicos" className="py-20 bg-[#050b14]">
         <div className="max-w-6xl mx-auto px-6">
