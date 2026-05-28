@@ -560,11 +560,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-    </main>
-  );
+            </section>
 
-      </section>
       <footer className="border-t border-cyan-500/10 bg-[#050b14] py-8">
         <div className="mx-auto max-w-7xl px-6 text-center">
           <p className="text-sm tracking-wide text-gray-500">
