@@ -1,19 +1,21 @@
+
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function Home() {
   const [showPromo, setShowPromo] = useState(false);
+  const [open, setOpen] = useState(false);
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowPromo(true);
-  }, 1200);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPromo(true);
+    }, 1200);
 
-  return () => clearTimeout(timer);
-}, []);
-  
-  // Form (Contato)
+    return () => clearTimeout(timer);
+  }, []);
+
+  // FORM
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [tipo, setTipo] = useState("");
@@ -21,16 +23,23 @@ useEffect(() => {
   const [descricao, setDescricao] = useState("");
 
   const whatsappNumber = "5521969187827";
+
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappNumber}`,
     [whatsappNumber]
   );
-  
+
   const scrollToId = (id) => {
     setOpen(false);
+
     const el = document.getElementById(id);
+
     if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   const enviarWhatsApp = () => {
@@ -45,82 +54,88 @@ useEffect(() => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       msg
     )}`;
+
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <main> className="bg-black text-white">
+    <main className="bg-black text-white">
+
+      {/* POPUP */}
       {showPromo && (
-  <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-    <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-yellow-400/30 bg-gradient-to-br from-green-700 via-green-600 to-blue-700 p-8 shadow-2xl">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-yellow-400/30 bg-gradient-to-br from-green-700 via-green-600 to-blue-700 p-8 shadow-2xl">
 
-      {/* Botão fechar */}
-      <button
-        onClick={() => setShowPromo(false)}
-        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-2xl font-bold text-white transition hover:bg-black/50"
-      >
-        ×
-      </button>
+            <button
+              onClick={() => setShowPromo(false)}
+              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-2xl font-bold text-white transition hover:bg-black/50"
+            >
+              ×
+            </button>
 
-      {/* Bandeiras */}
-      <div className="absolute left-4 top-4 text-4xl">🇧🇷</div>
-      <div className="absolute bottom-4 right-4 text-4xl">⚽</div>
+            <div className="absolute left-4 top-4 text-4xl">🇧🇷</div>
+            <div className="absolute bottom-4 right-4 text-4xl">⚽</div>
 
-      <div className="text-center">
-        <span className="mb-4 inline-block rounded-full bg-yellow-400 px-5 py-2 text-sm font-bold uppercase tracking-widest text-black shadow-lg">
-          Promoção Especial de Junho
-        </span>
+            <div className="text-center">
+              <span className="mb-4 inline-block rounded-full bg-yellow-400 px-5 py-2 text-sm font-bold uppercase tracking-widest text-black shadow-lg">
+                Promoção Especial de Junho
+              </span>
 
-        <h2 className="mb-6 text-4xl font-black leading-tight text-white md:text-5xl">
-          PROMOÇÃO
-          <br />
-          COPA DO MUNDO 🇧🇷
-        </h2>
+              <h2 className="mb-6 text-4xl font-black leading-tight text-white md:text-5xl">
+                PROMOÇÃO
+                <br />
+                COPA DO MUNDO 🇧🇷
+              </h2>
 
-        <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
-          Veículos que vierem por <strong>seguradora</strong> ganham
-          <span className="font-black text-yellow-300">
-            {" "}POLIMENTO TÉCNICO GRATUITO
-          </span>
-        </p>
+              <p className="mx-auto mb-6 max-w-xl text-lg leading-relaxed text-white/90">
+                Veículos que vierem por seguradora ganham
+                <span className="font-black text-yellow-300">
+                  {" "}POLIMENTO TÉCNICO GRATUITO
+                </span>
+              </p>
 
-        <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/90">
-          Clientes que vierem pelo site ganham
-          <span className="font-black text-yellow-300">
-            {" "}10% OFF NO PARTICULAR
-          </span>
-        </p>
+              <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/90">
+                Clientes que vierem pelo site ganham
+                <span className="font-black text-yellow-300">
+                  {" "}10% OFF NO PARTICULAR
+                </span>
+              </p>
 
-        <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
-          <a
-            href="https://wa.me/5521969187827"
-            target="_blank"
-            className="rounded-2xl bg-black px-8 py-4 text-lg font-bold text-cyan-400 transition hover:scale-105 hover:bg-neutral-900"
-          >
-            Falar no WhatsApp
-          </a>
+              <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl bg-black px-8 py-4 text-lg font-bold text-cyan-400 transition hover:scale-105 hover:bg-neutral-900"
+                >
+                  Falar no WhatsApp
+                </a>
 
-          <a
-            href="https://instagram.com/blinkesteticaauto"
-            target="_blank"
-            className="rounded-2xl border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur transition hover:scale-105 hover:bg-white/20"
-          >
-            Instagram + 10% OFF
-          </a>
+                <a
+                  href="https://instagram.com/blinkesteticaauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur transition hover:scale-105 hover:bg-white/20"
+                >
+                  Instagram + 10% OFF
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-)}
+      )}
+
       {/* TOP BAR */}
       <div className="bg-gradient-to-r from-cyan-600 to-sky-500 text-white py-2">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
+
             <div className="flex flex-wrap items-center justify-center gap-4">
               <div className="flex items-center gap-2">
                 <PhoneIcon className="w-4 h-4" />
                 <span>(21) 96918-7827 / (21) 98222-7699</span>
               </div>
+
               <div className="flex items-center gap-2">
                 <PinIcon className="w-4 h-4" />
                 <span>Barra da Tijuca - RJ</span>
@@ -131,6 +146,7 @@ useEffect(() => {
               <ClockIcon className="w-4 h-4" />
               <span>Atendimento rápido no WhatsApp</span>
             </div>
+
           </div>
         </div>
       </div>
@@ -138,11 +154,13 @@ useEffect(() => {
       {/* HEADER */}
       <header className="bg-black/90 backdrop-blur-md border-b border-cyan-500/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
+
           <nav className="flex items-center justify-between h-16 md:h-20">
-            {/* Brand */}
+
+            {/* LOGO */}
             <button
               type="button"
-              className="flex items-center gap-3 cursor-pointer text-left"
+              className="flex items-center gap-3 text-left"
               onClick={() => scrollToId("hero")}
             >
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden bg-white/10 border border-white/10">
@@ -156,61 +174,36 @@ useEffect(() => {
               <div className="leading-tight">
                 <div className="text-lg md:text-2xl font-bold text-white">
                   BLINK{" "}
-                  <span className="text-cyan-400">ESTÉTICA AUTOMOTIVA</span>
+                  <span className="text-cyan-400">
+                    ESTÉTICA AUTOMOTIVA
+                  </span>
                 </div>
+
                 <p className="text-xs text-cyan-400 font-semibold hidden md:block">
                   Onde estética vira padrão
                 </p>
               </div>
             </button>
 
-            {/* Desktop menu */}
+            {/* MENU DESKTOP */}
             <ul className="hidden md:flex items-center gap-6 lg:gap-8">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollToId("servicos")}
-                  className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
-                >
-                  Serviços
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollToId("porque")}
-                  className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
-                >
-                  Por que nós?
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollToId("avaliacoes")}
-                  className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
-                >
-                  Avaliações
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollToId("galeria")}
-                  className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
-                >
-                  Galeria
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollToId("contato")}
-                  className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
-                >
-                  Contato
-                </button>
-              </li>
+              {[
+                ["servicos", "Serviços"],
+                ["porque", "Por que nós?"],
+                ["avaliacoes", "Avaliações"],
+                ["galeria", "Galeria"],
+                ["contato", "Contato"],
+              ].map(([id, label]) => (
+                <li key={id}>
+                  <button
+                    type="button"
+                    onClick={() => scrollToId(id)}
+                    className="text-gray-300 hover:text-cyan-400 font-medium transition-colors"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
 
               <li>
                 <a
@@ -224,101 +217,47 @@ useEffect(() => {
               </li>
             </ul>
 
-            {/* Mobile button */}
+            {/* MOBILE BUTTON */}
             <button
               type="button"
               className="md:hidden text-white"
-              aria-label="Abrir menu"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen(!open)}
             >
               <MenuIcon className="w-6 h-6" />
             </button>
+
           </nav>
-
-          {/* Mobile menu */}
-          {open && (
-            <div className="md:hidden pb-4">
-              <div className="bg-gray-900/70 border border-cyan-500/20 rounded-xl p-4">
-                <div className="grid gap-2">
-                  <button
-                    type="button"
-                    onClick={() => scrollToId("servicos")}
-                    className="text-left px-3 py-2 rounded-lg text-gray-200 hover:bg-cyan-500/10 hover:text-cyan-300"
-                  >
-                    Serviços
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => scrollToId("porque")}
-                    className="text-left px-3 py-2 rounded-lg text-gray-200 hover:bg-cyan-500/10 hover:text-cyan-300"
-                  >
-                    Por que nós?
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => scrollToId("avaliacoes")}
-                    className="text-left px-3 py-2 rounded-lg text-gray-200 hover:bg-cyan-500/10 hover:text-cyan-300"
-                  >
-                    Avaliações
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => scrollToId("galeria")}
-                    className="text-left px-3 py-2 rounded-lg text-gray-200 hover:bg-cyan-500/10 hover:text-cyan-300"
-                  >
-                    Galeria
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => scrollToId("contato")}
-                    className="text-left px-3 py-2 rounded-lg text-gray-200 hover:bg-cyan-500/10 hover:text-cyan-300"
-                  >
-                    Contato
-                  </button>
-
-                  <a
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-4 py-3 rounded-lg text-center"
-                  >
-                    WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </header>
 
-      {/* HERO (estilo do print) */}
+      {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center px-6 text-center"
+        className="relative min-h-screen flex items-center justify-center px-6 text-center"
         style={{
           backgroundImage: "url('/hero.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        {/* overlay */}
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-black/60"></div>
 
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <span className="inline-flex items-center gap-2 mb-6 px-6 py-2 text-sm font-semibold rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 backdrop-blur">
-            <SparkIcon className="w-4 h-4" />
-            Onde estética vira padrão
+        <div className="relative z-10 max-w-5xl">
+
+          <span className="inline-flex items-center gap-2 mb-6 px-5 py-2 text-sm font-medium rounded-full bg-cyan-500/15 text-cyan-400 backdrop-blur">
+            ✦ Onde estética vira padrão
           </span>
 
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
             Oficina Estética Automotiva na{" "}
-            <span className="text-cyan-400">Barra da Tijuca</span>
+            <span className="text-cyan-400">
+              Barra da Tijuca
+            </span>
           </h1>
 
           <p className="text-gray-200 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
-            Especialistas em Lanternagem, pintura e polimento técnico. Qualidade,
-            transparência e confiança em cada detalhe.
+            Especialistas em lanternagem, pintura e polimento técnico.
+            Qualidade, transparência e confiança em cada detalhe.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
@@ -326,55 +265,132 @@ useEffect(() => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black px-7 py-3 rounded-lg font-semibold transition"
+              className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black px-7 py-3 rounded-lg font-semibold transition"
             >
-              <PhoneIcon className="w-5 h-5" />
               WhatsApp
             </a>
 
             <button
               type="button"
               onClick={() => scrollToId("servicos")}
-              className="inline-flex items-center justify-center border border-cyan-400 text-cyan-300 px-7 py-3 rounded-lg hover:bg-cyan-400/10 transition"
+              className="border border-cyan-400 text-cyan-400 px-7 py-3 rounded-lg hover:bg-cyan-400/10 transition"
             >
               Ver Serviços
             </button>
           </div>
-     {/* SEGURADORAS */}
-<section className="py-20 bg-[#050b14]">
-  <div className="max-w-7xl mx-auto px-6 text-center">
-    <h2 className="text-3xl font-bold mb-2">
-      Trabalhamos com as melhores seguradoras do mercado
-    </h2>
-    <p className="text-gray-400 mb-10">
-      Atendemos todos os sinistros com agilidade e profissionalismo
-    </p>
 
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      {[
-        { nome: "Porto Seguro", img: "/porto.png" },
-        { nome: "Azul Seguros", img: "/azul.png" },
-        { nome: "Itaú Seguros", img: "/itau.png" },
-        { nome: "e demais seguradoras", img: "/demais.png" },
-      ].map((s) => (
-        <div
-          key={s.nome}
-          className="bg-[#0b1627]/70 border border-white/10 rounded-2xl px-6 py-5 flex items-center justify-center gap-4 backdrop-blur"
-        >
-          <div className="w-12 h-12 rounded-xl bg-black/30 border border-white/10 flex items-center justify-center overflow-hidden">
-            <img
-              src={s.img}
-              alt={s.nome}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <span className="font-semibold text-white">{s.nome}</span>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+      {/* SEGURADORAS */}
+      <section className="py-20 bg-[#050b14]">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+
+          <h2 className="text-3xl font-bold mb-2">
+            Trabalhamos com as melhores seguradoras do mercado
+          </h2>
+
+          <p className="text-gray-400 mb-10">
+            Atendemos todos os sinistros com agilidade e profissionalismo
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+            {[
+              { nome: "Porto Seguro", img: "/porto.png" },
+              { nome: "Azul Seguros", img: "/azul.png" },
+              { nome: "Itaú Seguros", img: "/itau.png" },
+              { nome: "Demais Seguradoras", img: "/demais.png" },
+            ].map((s) => (
+              <div
+                key={s.nome}
+                className="bg-[#0b1627]/70 border border-white/10 rounded-2xl px-6 py-5 flex items-center justify-center gap-4 backdrop-blur"
+              >
+                <div className="w-12 h-12 rounded-xl overflow-hidden bg-black/30">
+                  <img
+                    src={s.img}
+                    alt={s.nome}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <span className="font-semibold text-white">
+                  {s.nome}
+                </span>
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+  );
+}
+
+/* ICONES */
+
+function PhoneIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5.11 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.09 11.91a16 16 0 0 0 6 6l2.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function PinIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function ClockIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+}
+
+function MenuIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+```
+
 
       {/* SOBRE (print) */}
       <section className="py-16 bg-[#0a1220]">
